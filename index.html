@@ -3664,56 +3664,43 @@
                 margin-bottom: 1.5rem;
             }
 
-            /* Footer mobile */
+            /* 푸터 모바일 심플 */
             .footer {
-                padding: 2.5rem 0 1.5rem;
+                padding: 2rem 0 1rem;
             }
 
             .footer-content {
                 flex-direction: column;
-                gap: 2rem;
-                padding: 0 1.25rem;
+                gap: 1.5rem;
+                padding: 0 1rem;
             }
 
             .footer-section {
-                text-align: center !important;
-                min-height: auto;
-                background: rgba(255, 255, 255, 0.08);
-                padding: 1.5rem;
-                border-radius: 15px;
-                backdrop-filter: blur(10px);
+                text-align: center;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .footer-section h3 {
-                font-size: 1.15rem;
-                margin-bottom: 1.25rem;
-                text-align: center !important;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
+                font-size: 0.9rem;
+                margin-bottom: 0.75rem;
+                text-align: center;
             }
 
             .footer-section p {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
-                text-align: center !important;
-                line-height: 1.6;
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                line-height: 1.4;
             }
             
             .footer-section a {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+                margin: 0.1rem;
                 display: inline-block;
-                margin: 0.3rem 0;
-                padding: 0.5rem 1rem;
-                background: rgba(255, 255, 255, 0.15);
-                border-radius: 8px;
-                transition: var(--transition);
-            }
-            
-            .footer-section a:hover {
-                background: rgba(255, 255, 255, 0.25);
-                transform: translateY(-1px);
             }
 
             /* Navigation mobile */
@@ -3831,25 +3818,29 @@
                 overflow-x: hidden;
             }
 
-            /* Organization chart mobile fix - prevent horizontal scroll */
+            /* 조직도 모바일 - 가로 스크롤 가능하게 */
             .org-chart {
-                max-width: 100%;
-                overflow-x: hidden;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 0 1rem;
+                -webkit-overflow-scrolling: touch;
             }
 
             .org-level {
-                flex-direction: column;
-                align-items: center;
-                max-width: 100%;
-                overflow-x: hidden;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                min-width: fit-content;
+                padding-bottom: 0.5rem;
             }
 
             .departments-row {
-                display: grid;
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: row;
                 gap: 1rem;
-                justify-items: center;
-                max-width: 100%;
+                min-width: fit-content;
+                justify-content: flex-start;
             }
 
             /* Ensure proper spacing on very small screens */
@@ -4455,22 +4446,33 @@
             }
             
             .org-box {
-                min-width: 200px;
-                max-width: 260px;
-                width: 80%;
-                padding: 1.25rem 0.75rem;
-                font-size: 0.85rem;
-                margin: 0 auto;
+                width: 220px;
+                min-width: 220px;
+                max-width: 220px;
+                padding: 1rem;
+                font-size: 0.8rem;
+                height: 80px;
+                background: white;
+                border: 1.5px solid var(--primary);
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 95, 153, 0.15);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
             }
             
             .org-box.ceo {
-                background: linear-gradient(135deg, var(--primary), var(--secondary));
-                color: var(--white);
+                background: var(--primary);
+                color: white;
                 transform: none;
                 margin-bottom: 1rem;
-                width: 65%;
+                width: 220px;
+                min-width: 220px;
                 max-width: 220px;
-                min-width: 180px;
+                font-weight: 600;
+                border: 1.5px solid var(--secondary);
             }
             
             .org-box.ceo .org-title,
@@ -4483,9 +4485,9 @@
                 color: var(--white);
                 transform: none;
                 margin-bottom: 0.5rem;
-                width: 70%;
-                max-width: 230px;
-                min-width: 190px;
+                width: 220px;
+                min-width: 220px;
+                max-width: 220px;
             }
             
             .org-box.dp-box .org-title,
