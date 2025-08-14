@@ -520,6 +520,10 @@
         /* 조직도 단순한 구조 - 연결선 없음 */
 
 
+        /* Desktop/Mobile Display Control */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+
         /* Reveal Animations */
         .reveal { opacity: 0; transition: opacity .7s ease, transform .7s ease; will-change: opacity, transform; }
         .reveal-up { transform: translateY(18px); }
@@ -856,6 +860,186 @@
 
         /* Better touch targets for mobile */
         @media (max-width: 768px) {
+            /* Desktop/Mobile Display Control */
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+            
+            /* 모바일 전용 조직도 스타일 */
+            .mobile-org-chart {
+                padding: 1rem;
+                max-width: 100%;
+            }
+            
+            .mobile-org-card {
+                background: white;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 1rem;
+                margin-bottom: 0.75rem;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-org-card:active {
+                transform: scale(0.98);
+                box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            }
+            
+            .mobile-org-header {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                color: var(--primary);
+                font-size: 0.95rem;
+            }
+            
+            .mobile-org-header i {
+                width: 32px;
+                height: 32px;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.85rem;
+            }
+            
+            .mobile-org-content {
+                padding-left: 2.75rem;
+                color: #64748b;
+                font-size: 0.85rem;
+            }
+            
+            .mobile-org-divider {
+                text-align: center;
+                margin: 1.5rem 0 1rem;
+                position: relative;
+            }
+            
+            .mobile-org-divider span {
+                background: white;
+                padding: 0 1rem;
+                color: #94a3b8;
+                font-size: 0.8rem;
+                font-weight: 500;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .mobile-org-divider::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                height: 1px;
+                background: #e2e8f0;
+            }
+            
+            /* 모바일 푸터 스타일 */
+            .mobile-footer {
+                background: linear-gradient(135deg, var(--primary), #1e40af);
+                padding: 1rem 0;
+            }
+            
+            .mobile-footer-accordion {
+                padding: 0 1rem;
+            }
+            
+            .mobile-footer-item {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                margin-bottom: 0.5rem;
+            }
+            
+            .mobile-footer-header {
+                width: 100%;
+                background: none;
+                border: none;
+                color: white;
+                padding: 1rem 0.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.95rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-footer-header span {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .mobile-footer-header i {
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-footer-header.active i:last-child {
+                transform: rotate(180deg);
+            }
+            
+            .mobile-footer-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0 0.5rem;
+            }
+            
+            .mobile-footer-content.show {
+                max-height: 300px;
+                padding: 0 0.5rem 1rem;
+            }
+            
+            .mobile-footer-content a {
+                display: block;
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-footer-content a:active {
+                background: rgba(255,255,255,0.1);
+                color: white;
+            }
+            
+            .mobile-contact-item {
+                padding: 0.5rem 1rem;
+                color: rgba(255,255,255,0.9);
+            }
+            
+            .mobile-contact-item strong {
+                display: block;
+                color: white;
+                margin-bottom: 0.25rem;
+                font-size: 0.9rem;
+            }
+            
+            .mobile-contact-item a {
+                color: rgba(255,255,255,0.8);
+                font-size: 0.85rem;
+                padding: 0;
+            }
+            
+            .mobile-footer-bottom {
+                text-align: center;
+                padding: 1.5rem 1rem 1rem;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                margin-top: 1rem;
+            }
+            
+            .mobile-footer-bottom p {
+                color: rgba(255,255,255,0.8);
+                margin: 0.25rem 0;
+                font-size: 0.8rem;
+            }
+            
             .section {
                 padding: 2rem 1rem;
             }
@@ -5334,7 +5518,8 @@
                 </p>
             </div>
             
-            <div class="org-chart fade-in">
+            <!-- PC 버전 조직도 -->
+            <div class="org-chart fade-in desktop-only">
                 <!-- 대표이사 -->
                 <div class="org-level">
                     <div class="org-box ceo">
@@ -5367,6 +5552,59 @@
                         <div class="org-title" data-i18n="org-dept-admin-title">경영지원실</div>
                         <div class="org-desc" data-i18n="org-dept-admin-desc"></div>
                         <div class="org-location" data-i18n="org-loc-seoul">서울 본사</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 모바일 버전 조직도 - 심플한 카드 스타일 -->
+            <div class="mobile-org-chart mobile-only">
+                <div class="mobile-org-card">
+                    <div class="mobile-org-header">
+                        <i class="fas fa-user-tie"></i>
+                        <span data-i18n="org-ceo-title">대표이사</span>
+                    </div>
+                    <div class="mobile-org-content">CEO</div>
+                </div>
+                
+                <div class="mobile-org-card">
+                    <div class="mobile-org-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <span data-i18n="org-dp-title">안전보건 대표자</span>
+                    </div>
+                    <div class="mobile-org-content">DP</div>
+                </div>
+                
+                <div class="mobile-org-divider">
+                    <span>주요 부서</span>
+                </div>
+                
+                <div class="mobile-org-card">
+                    <div class="mobile-org-header">
+                        <i class="fas fa-ship"></i>
+                        <span data-i18n="org-dept-ship-title">선박관리실</span>
+                    </div>
+                    <div class="mobile-org-content">
+                        <span data-i18n="org-loc-seoul">서울 본사</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-org-card">
+                    <div class="mobile-org-header">
+                        <i class="fas fa-users"></i>
+                        <span data-i18n="org-dept-crew-title">해상인력관리실</span>
+                    </div>
+                    <div class="mobile-org-content">
+                        <span data-i18n="org-loc-busan">부산 사무소</span>
+                    </div>
+                </div>
+                
+                <div class="mobile-org-card">
+                    <div class="mobile-org-header">
+                        <i class="fas fa-briefcase"></i>
+                        <span data-i18n="org-dept-admin-title">경영지원실</span>
+                    </div>
+                    <div class="mobile-org-content">
+                        <span data-i18n="org-loc-seoul">서울 본사</span>
                     </div>
                 </div>
             </div>
@@ -6005,7 +6243,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div>
-            <div class="footer-content">
+            <!-- PC 버전 푸터 -->
+            <div class="footer-content desktop-only">
                 <div class="footer-section">
                     <h3>
                         <span data-i18n="footer-company-name">(주)도리코</span>
@@ -6050,6 +6289,67 @@
                     <p><i class="fas fa-map-marker-alt" style="color: #60a5fa; margin-right: 0.3rem;"></i><strong data-i18n="footer-busan-office">부산 사무소</strong><br><i class="fas fa-phone" style="color: #60a5fa; margin-right: 0.3rem;"></i><a href="tel:+82-51-441-8911">+82-51-441-8911</a></p>
                     <p><i class="fas fa-envelope" style="color: #60a5fa; margin-right: 0.3rem;"></i><strong data-i18n="footer-email">이메일</strong><br><i class="fas fa-at" style="color: #60a5fa; margin-right: 0.3rem;"></i><a href="mailto:smt@doriko.com">smt@doriko.com</a></p>
                     <p><i class="fas fa-at" style="color: #60a5fa; margin-right: 0.3rem;"></i><a href="mailto:mat@doriko.com">mat@doriko.com</a></p>
+                </div>
+            </div>
+            
+            <!-- 모바일 버전 푸터 - 심플하고 깔끔한 디자인 -->
+            <div class="mobile-footer mobile-only">
+                <div class="mobile-footer-accordion">
+                    <!-- 회사 정보 -->
+                    <div class="mobile-footer-item">
+                        <button class="mobile-footer-header" onclick="toggleFooterAccordion(this)">
+                            <span><i class="fas fa-building"></i> 회사정보</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mobile-footer-content">
+                            <a href="#about">회사소개</a>
+                            <a href="#ceo">대표이사 인사말</a>
+                            <a href="#organization">조직도</a>
+                            <a href="#history">연혁</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 서비스 -->
+                    <div class="mobile-footer-item">
+                        <button class="mobile-footer-header" onclick="toggleFooterAccordion(this)">
+                            <span><i class="fas fa-ship"></i> 서비스</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mobile-footer-content">
+                            <a href="#services">선박관리</a>
+                            <a href="#services">선원관리</a>
+                            <a href="#services">벌크선 검사</a>
+                            <a href="#services">신조선 감리</a>
+                        </div>
+                    </div>
+                    
+                    <!-- 연락처 -->
+                    <div class="mobile-footer-item">
+                        <button class="mobile-footer-header" onclick="toggleFooterAccordion(this)">
+                            <span><i class="fas fa-phone"></i> 연락처</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mobile-footer-content">
+                            <div class="mobile-contact-item">
+                                <strong>서울 본사</strong>
+                                <a href="tel:+82-2-2021-7422">02-2021-7422</a>
+                            </div>
+                            <div class="mobile-contact-item">
+                                <strong>부산 사무소</strong>
+                                <a href="tel:+82-51-441-8911">051-441-8911</a>
+                            </div>
+                            <div class="mobile-contact-item">
+                                <strong>이메일</strong>
+                                <a href="mailto:smt@doriko.com">smt@doriko.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 모바일 푸터 하단 -->
+                <div class="mobile-footer-bottom">
+                    <p>© 2025 (주)도리코</p>
+                    <p>All rights reserved</p>
                 </div>
             </div>
             
@@ -7249,6 +7549,13 @@
             document.getElementById('adminModal').style.display = 'block';
         }
         
+        // Mobile Footer Accordion
+        function toggleFooterAccordion(button) {
+            const content = button.nextElementSibling;
+            button.classList.toggle('active');
+            content.classList.toggle('show');
+        }
+
         function closeAdminModal() {
             document.getElementById('adminModal').style.display = 'none';
             document.getElementById('adminPwd').value = '';
