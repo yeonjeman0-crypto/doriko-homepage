@@ -986,6 +986,53 @@
                 margin-bottom: 0.25rem !important;
             }
             
+            /* 특화서비스 모바일 완전 재설계 */
+            .fleet-features {
+                margin-top: 1rem !important;
+            }
+            
+            .fleet-features h4 {
+                background: var(--primary) !important;
+                color: white !important;
+                padding: 0.75rem 1rem !important;
+                margin: 0 0 1rem 0 !important;
+                border-radius: 8px !important;
+                font-size: 0.95rem !important;
+                text-align: center !important;
+            }
+            
+            .fleet-features ul {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                list-style: none !important;
+            }
+            
+            .fleet-features ul li {
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 8px !important;
+                padding: 0.75rem 1rem !important;
+                margin: 0 !important;
+                font-size: 0.8rem !important;
+                line-height: 1.5 !important;
+                color: #475569 !important;
+                position: relative !important;
+                padding-left: 2.5rem !important;
+            }
+            
+            .fleet-features ul li::before {
+                content: "✓" !important;
+                position: absolute !important;
+                left: 0.75rem !important;
+                top: 0.75rem !important;
+                color: var(--primary) !important;
+                font-weight: bold !important;
+                font-size: 0.9rem !important;
+            }
+            
             /* 선주사 섹션 모바일 최적화 */
             .ship-owners-section {
                 margin-top: 2rem !important;
@@ -1149,6 +1196,199 @@
             /* 버튼 텍스트 통일 */
             .btn, .mobile-footer-header {
                 font-size: 0.9rem !important;
+            }
+            
+            /* 히어로 섹션 모바일 완전 재설계 */
+            .hero {
+                min-height: 80vh !important;
+                background: linear-gradient(
+                    135deg,
+                    rgba(30, 64, 175, 0.95) 0%,
+                    rgba(59, 130, 246, 0.9) 50%,
+                    rgba(96, 165, 250, 0.85) 100%
+                ),
+                url('HERO/BULK 1.png') center/cover no-repeat !important;
+                position: relative !important;
+            }
+            
+            /* 모바일에서 동영상 숨기기 */
+            .hero-video-container {
+                display: none !important;
+            }
+            
+            .hero-content {
+                padding: 3rem 1rem 2rem 1rem !important;
+                max-width: 100% !important;
+                text-align: center !important;
+                z-index: 10 !important;
+            }
+            
+            .hero-badge {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 0.85rem !important;
+                margin-bottom: 1.5rem !important;
+                border-radius: 25px !important;
+                background: rgba(255, 255, 255, 0.2) !important;
+                backdrop-filter: blur(10px) !important;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 1.5rem !important;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7) !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 2rem !important;
+                padding: 1rem 0.5rem !important;
+                background: rgba(0, 0, 0, 0.3) !important;
+                backdrop-filter: blur(8px) !important;
+                border-radius: 12px !important;
+                text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8) !important;
+            }
+            
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .hero-buttons .btn {
+                width: 100% !important;
+                max-width: 280px !important;
+                margin: 0 auto !important;
+                padding: 1rem 2rem !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+            }
+            
+            .hero-scroll {
+                bottom: 1rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            /* 전체 모바일 세로형 레이아웃 최적화 */
+            
+            /* 네비게이션 모바일 개선 */
+            .navbar {
+                padding: 0.75rem 1rem !important;
+                background: rgba(255, 255, 255, 0.95) !important;
+                backdrop-filter: blur(10px) !important;
+            }
+            
+            .logo {
+                font-size: 1.4rem !important;
+                font-weight: 700 !important;
+            }
+            
+            /* KPI 섹션 모바일 세로형 최적화 */
+            .kpi-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                margin-top: 1.5rem !important;
+            }
+            
+            .kpi-box {
+                padding: 1.5rem !important;
+                min-height: 120px !important;
+                text-align: center !important;
+                background: white !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 12px !important;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+            }
+            
+            .kpi-value {
+                font-size: 1.8rem !important;
+                font-weight: 700 !important;
+                color: var(--primary) !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .kpi-label {
+                font-size: 0.9rem !important;
+                color: #64748b !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* 미션/비전 모바일 세로형 */
+            .mission-vision-container {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .mission-section, .vision-section {
+                width: 100% !important;
+            }
+            
+            .mission-section .card, .vision-section .card {
+                padding: 1.5rem !important;
+                border-radius: 12px !important;
+                text-align: center !important;
+            }
+            
+            /* 타임라인 모바일 최적화 */
+            .timeline {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                padding: 0 !important;
+            }
+            
+            .timeline-item {
+                padding: 1.5rem !important;
+                border-radius: 12px !important;
+                text-align: center !important;
+            }
+            
+            .timeline-year {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* 연락처 섹션 모바일 최적화 */
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .contact-card {
+                padding: 1.5rem !important;
+                text-align: center !important;
+                border-radius: 12px !important;
+            }
+            
+            .contact-icon {
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* 전체 섹션 간격 조정 */
+            .section {
+                padding: 2rem 1rem !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .section-header {
+                margin-bottom: 2rem !important;
+                text-align: center !important;
+            }
+            
+            .section-badge {
+                margin-bottom: 1rem !important;
+                justify-content: center !important;
+            }
+            
+            /* 푸터 모바일 간소화 */
+            .footer {
+                padding: 2rem 0 1rem 0 !important;
+            }
+            
+            .footer-content {
+                padding: 0 1rem !important;
             }
             
             .mobile-org-card {
@@ -4431,6 +4671,212 @@
 
             .bg-video-section {
                 padding: 6rem 0;
+            }
+        }
+
+        /* PC 버전 박스 크기 및 정렬 개선 */
+        @media (min-width: 769px) {
+            /* KPI 섹션 PC 최적화 */
+            .kpi-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+                align-items: stretch;
+            }
+            
+            .kpi-box {
+                padding: 2.5rem 2rem;
+                min-height: 180px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: white;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .kpi-box:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            }
+            
+            /* Fleet 카드 PC 최적화 */
+            .fleet-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+                align-items: stretch;
+            }
+            
+            .fleet-card {
+                min-height: 600px;
+                display: flex;
+                flex-direction: column;
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .fleet-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            }
+            
+            .fleet-header {
+                flex: 0 0 auto;
+                padding: 3rem 2.5rem 2rem 2.5rem;
+                text-align: center;
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            }
+            
+            .fleet-body {
+                flex: 1;
+                padding: 2.5rem;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .fleet-description {
+                flex: 0 0 auto;
+                margin-bottom: 2rem;
+            }
+            
+            .fleet-features {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .fleet-features ul {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .fleet-features ul li {
+                padding: 1rem 1.2rem;
+                background: #f8fafc;
+                border-left: 4px solid var(--primary);
+                border-radius: 0 8px 8px 0;
+                transition: all 0.3s ease;
+            }
+            
+            .fleet-features ul li:hover {
+                background: #e2e8f0;
+                transform: translateX(5px);
+            }
+            
+            /* 서비스 섹션 PC 최적화 */
+            .service-detail {
+                display: flex;
+                align-items: center;
+                gap: 4rem;
+                margin-bottom: 4rem;
+                padding: 3rem;
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                min-height: 400px;
+            }
+            
+            .service-detail:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+            
+            .service-content {
+                flex: 1;
+                max-width: 50%;
+            }
+            
+            .service-image {
+                flex: 0 0 45%;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+                border-radius: 16px;
+                padding: 2rem;
+            }
+            
+            .service-img {
+                max-width: 100%;
+                max-height: 250px;
+                object-fit: contain;
+            }
+            
+            /* 선주사 섹션 PC 최적화 */
+            .owners-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            
+            .owner-card {
+                padding: 2rem;
+                text-align: center;
+                background: white;
+                border-radius: 16px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                min-height: 160px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .owner-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            }
+            
+            /* 미션/비전 PC 최적화 */
+            .mission-vision-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: stretch;
+            }
+            
+            .mission-section .card,
+            .vision-section .card {
+                height: 100%;
+                padding: 3rem 2.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            }
+            
+            /* 연락처 섹션 PC 최적화 */
+            .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
+            
+            .contact-card {
+                padding: 3rem 2.5rem;
+                text-align: center;
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .contact-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.12);
             }
         }
 
