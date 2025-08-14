@@ -3,7 +3,10 @@
     "allow": [
       "mcp__sequential-thinking__sequentialthinking",
       "Bash(cp:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
