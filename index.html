@@ -874,10 +874,14 @@
                 background: white;
                 border: 1px solid #e2e8f0;
                 border-radius: 12px;
-                padding: 1rem;
+                padding: 1.25rem;
                 margin-bottom: 0.75rem;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                 transition: all 0.3s ease;
+                min-height: 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             
             .mobile-org-card:active {
@@ -3701,8 +3705,9 @@
             
             .ceo-message-container {
                 width: 95%;
-                padding: 1.5rem 1rem;
-                margin: 1rem auto 0 auto;
+                padding: 1.5rem;
+                margin: 1rem auto;
+                min-height: auto;
             }
             
             .ceo-message-text {
@@ -3717,22 +3722,31 @@
             }
             
             .kpi-box {
-                padding: 1.5rem 0.75rem;
-                min-height: 140px;
+                padding: 1.5rem;
+                min-height: 160px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
             
             .kpi-value {
                 font-size: 2rem;
             }
             
+            /* 모든 카드 크기 통일 */
             .card {
-                padding: 1.5rem 1rem;
+                padding: 1.5rem;
+                min-height: 160px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             
             .mission-section .card,
             .vision-section .card {
-                padding: 1.5rem 1rem;
-                min-height: 180px;
+                padding: 1.5rem;
+                min-height: 160px;
             }
             
             .timeline {
@@ -3741,7 +3755,11 @@
             }
             
             .timeline-item {
-                padding: 1.75rem 1.25rem;
+                padding: 1.5rem;
+                min-height: 140px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             
             .timeline-year {
@@ -3806,20 +3824,31 @@
                 margin-bottom: 2rem;
             }
 
-            /* Cards and grids mobile */
+            /* Cards and grids mobile - 모든 카드 통일 */
             .stats-grid,
             .services-grid,
             .kpi-row-first,
             .kpi-row-second {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             .card,
             .service-card,
-            .kpi-box {
-                padding: 2rem 1.5rem;
-                margin-bottom: 1.5rem;
+            .kpi-box,
+            .stat-card,
+            .owner-card {
+                padding: 1.5rem !important;
+                margin-bottom: 1rem;
+                min-height: 140px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .service-card {
+                min-height: 160px !important;
             }
 
             /* Contact section mobile */
@@ -3832,8 +3861,12 @@
             .contact-card {
                 min-width: auto;
                 max-width: 100%;
-                padding: 2.5rem 1.5rem;
+                padding: 1.5rem !important;
                 margin: 0;
+                min-height: 160px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .contact-row {
@@ -3912,7 +3945,15 @@
             /* Fleet section mobile */
             .fleet-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1rem;
+            }
+            
+            .fleet-card {
+                padding: 1.5rem !important;
+                min-height: 160px !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             /* Mobile text improvements */
