@@ -489,6 +489,19 @@
         .org-box.ceo::before {
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
+        
+        .org-box.dp-box {
+            background: linear-gradient(135deg, #f8faff 0%, #fff7ed 100%);
+            border: 2px solid #f59e0b;
+        }
+        
+        .org-box.dp-box::before {
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+        
+        .org-box.dp-box .org-title {
+            color: #ea580c;
+        }
         .org-box .org-title { 
             font-weight: 700; 
             color: var(--primary); 
@@ -4351,16 +4364,88 @@
         }
         
         @media (max-width: 768px) {
+            .org-chart {
+                gap: 2.5rem;
+                max-width: 100%;
+            }
+            
             .org-level {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
+                gap: 1.5rem;
+                margin-bottom: 2rem;
             }
+            
+            .org-level.ceo-row {
+                margin-bottom: 1.5rem;
+            }
+            
+            .org-level.departments-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                justify-items: center;
+                max-width: 100%;
+            }
+            
+            .org-level.departments-row::before {
+                content: '⬇️ 산하 부서';
+                grid-column: 1 / -1;
+                display: block;
+                text-align: center;
+                font-size: 0.9rem;
+                color: var(--primary);
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                padding: 0.5rem;
+                background: rgba(30, 64, 175, 0.05);
+                border-radius: 15px;
+                width: 120px;
+                margin: 0 auto 1rem auto;
+            }
+            
+            .org-level.departments-row .org-box:nth-child(3) {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+            
             .org-box {
-                min-width: 300px;
+                min-width: 280px;
+                max-width: 320px;
+                width: 90%;
             }
+            
             .org-box.ceo {
-                transform: none;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: var(--white);
+                transform: scale(1.05);
+                margin-bottom: 1rem;
+            }
+            
+            .org-box.ceo .org-title,
+            .org-box.ceo .org-name {
+                color: var(--white);
+            }
+            
+            .org-box.dp-box {
+                background: linear-gradient(135deg, #f59e0b, #f97316);
+                color: var(--white);
+                transform: scale(1.02);
+                margin-bottom: 0.5rem;
+            }
+            
+            .org-box.dp-box .org-title,
+            .org-box.dp-box .org-desc {
+                color: var(--white);
+            }
+            
+            .org-level.dp-row::after {
+                content: '⬇️';
+                display: block;
+                text-align: center;
+                font-size: 1.5rem;
+                color: var(--primary);
+                margin-top: 1rem;
             }
             
             .timeline {
@@ -5203,8 +5288,8 @@
                 </div>
                 
                 <!-- 안전보건 대표자 -->
-                <div class="org-level">
-                    <div class="org-box">
+                <div class="org-level dp-row">
+                    <div class="org-box dp-box">
                         <div class="org-title" data-i18n="org-dp-title">안전보건 대표자 (DP)</div>
                         <div class="org-desc" data-i18n="org-dp-desc">DP</div>
                     </div>
