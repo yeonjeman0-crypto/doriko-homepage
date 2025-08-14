@@ -3666,30 +3666,54 @@
 
             /* Footer mobile */
             .footer {
-                padding: 3rem 0 1.5rem;
+                padding: 2.5rem 0 1.5rem;
             }
 
             .footer-content {
                 flex-direction: column;
                 gap: 2rem;
-                padding: 0 1rem;
+                padding: 0 1.25rem;
             }
 
             .footer-section {
                 text-align: center !important;
                 min-height: auto;
+                background: rgba(255, 255, 255, 0.08);
+                padding: 1.5rem;
+                border-radius: 15px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .footer-section h3 {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
+                font-size: 1.15rem;
+                margin-bottom: 1.25rem;
                 text-align: center !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
             }
 
             .footer-section p {
-                font-size: 0.9rem;
-                margin-bottom: 0.8rem;
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
                 text-align: center !important;
+                line-height: 1.6;
+            }
+            
+            .footer-section a {
+                display: inline-block;
+                margin: 0.3rem 0;
+                padding: 0.5rem 1rem;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                transition: var(--transition);
+            }
+            
+            .footer-section a:hover {
+                background: rgba(255, 255, 255, 0.25);
+                transform: translateY(-1px);
             }
 
             /* Navigation mobile */
@@ -3805,6 +3829,27 @@
             /* Mobile layout fixes */
             .overflow-hidden {
                 overflow-x: hidden;
+            }
+
+            /* Organization chart mobile fix - prevent horizontal scroll */
+            .org-chart {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .departments-row {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                justify-items: center;
+                max-width: 100%;
             }
 
             /* Ensure proper spacing on very small screens */
@@ -4256,7 +4301,7 @@
             box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
         }
         .timeline-content {
-            text-align: left;
+            text-align: center;
         }
         .timeline-content h3 {
             color: var(--primary);
@@ -4410,16 +4455,22 @@
             }
             
             .org-box {
-                min-width: 280px;
-                max-width: 320px;
-                width: 90%;
+                min-width: 200px;
+                max-width: 260px;
+                width: 80%;
+                padding: 1.25rem 0.75rem;
+                font-size: 0.85rem;
+                margin: 0 auto;
             }
             
             .org-box.ceo {
                 background: linear-gradient(135deg, var(--primary), var(--secondary));
                 color: var(--white);
-                transform: scale(1.05);
+                transform: none;
                 margin-bottom: 1rem;
+                width: 65%;
+                max-width: 220px;
+                min-width: 180px;
             }
             
             .org-box.ceo .org-title,
@@ -4430,8 +4481,11 @@
             .org-box.dp-box {
                 background: linear-gradient(135deg, #f59e0b, #f97316);
                 color: var(--white);
-                transform: scale(1.02);
+                transform: none;
                 margin-bottom: 0.5rem;
+                width: 70%;
+                max-width: 230px;
+                min-width: 190px;
             }
             
             .org-box.dp-box .org-title,
@@ -4443,9 +4497,9 @@
                 content: '⬇️';
                 display: block;
                 text-align: center;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 color: var(--primary);
-                margin-top: 1rem;
+                margin-top: 0.75rem;
             }
             
             .timeline {
