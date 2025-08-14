@@ -870,6 +870,63 @@
                 max-width: 100%;
             }
             
+            /* 모바일 CEO 메시지 스타일 통일 */
+            .ceo-section {
+                padding: 2rem 0 !important;
+            }
+            
+            .ceo-message-container {
+                padding: 1.5rem !important;
+                margin: 1rem auto 0 auto !important;
+                width: calc(100% - 2rem) !important;
+                max-width: calc(100% - 2rem) !important;
+                border-radius: 12px !important;
+                min-height: auto !important;
+            }
+            
+            .ceo-message-text {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 2rem !important;
+                text-align: left !important;
+            }
+            
+            .ceo-signature {
+                text-align: center !important;
+                padding-top: 1.5rem !important;
+            }
+            
+            /* 모바일 전체 박스 넓이 통일 */
+            .card, .service-card, .kpi-box, .stat-card, .owner-card,
+            .mission-vision-container .card, .contact-card {
+                width: calc(100% - 2rem) !important;
+                max-width: calc(100% - 2rem) !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding: 1.5rem !important;
+                border-radius: 12px !important;
+                box-sizing: border-box !important;
+            }
+            
+            .section {
+                padding: 2rem 1rem !important;
+            }
+            
+            .container {
+                padding: 0 1rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            /* 그리드 컨테이너들도 통일된 넓이 적용 */
+            .services-grid, .kpi-grid, .owners-grid, .mission-vision-container,
+            .contact-grid {
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                gap: 1rem !important;
+            }
+            
             .mobile-org-card {
                 background: white;
                 border: 1px solid #e2e8f0;
@@ -892,30 +949,34 @@
             .mobile-org-header {
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 gap: 0.75rem;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.75rem;
                 font-weight: 600;
                 color: var(--primary);
-                font-size: 0.95rem;
+                font-size: 1rem;
+                text-align: center;
             }
             
             .mobile-org-header i {
-                width: 32px;
-                height: 32px;
+                width: 36px;
+                height: 36px;
                 background: linear-gradient(135deg, var(--primary), var(--secondary));
                 color: white;
                 border-radius: 8px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 0.85rem;
+                font-size: 0.9rem;
+                flex-shrink: 0;
             }
             
             .mobile-org-content {
-                padding-left: 2.75rem;
                 color: #64748b;
                 font-size: 0.85rem;
-                margin-top: 0.25rem;
+                text-align: center;
+                margin-top: 0;
+                padding: 0;
             }
             
             .mobile-org-divider {
@@ -2815,47 +2876,7 @@
         }
 
 
-        /* Mobile optimizations for CEO section */
-        @media (max-width: 480px) {
-            .ceo-section {
-                padding: 2rem 0;
-            }
-
-            .ceo-message-wrapper {
-                gap: 2rem;
-                padding: 0 0.5rem;
-            }
-
-            .building-image {
-                width: 18rem; /* Enlarged on mobile too */
-            }
-
-            .message-content-new {
-                padding: 2rem 1.5rem;
-                flex-direction: column; /* Stack vertically on mobile */
-                text-align: center;
-            }
-
-            .message-title {
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .message-text-new {
-                font-size: 1rem;
-                line-height: 1.6;
-                margin-bottom: 2rem;
-            }
-
-            .message-signature-new {
-                padding-top: 1.5rem;
-                text-align: center;
-            }
-
-            .message-signature-new strong {
-                font-size: 1.1rem;
-            }
-        }
+        /* CEO 관련 스타일은 768px 미디어 쿼리에서 통일적으로 관리됨 */
         
         /* CEO Photo inside message box */
         .ceo-photo-wrapper {
@@ -3726,18 +3747,7 @@
                 margin-bottom: 2rem;
             }
             
-            .ceo-message-container {
-                width: 95%;
-                padding: 1.5rem;
-                margin: 1rem auto;
-                min-height: auto;
-            }
-            
-            .ceo-message-text {
-                font-size: 0.9rem;
-                line-height: 1.6;
-                margin-bottom: 2rem;
-            }
+            /* CEO 메시지 스타일은 768px 미디어쿼리에서 통일 관리 */
             
             .section-title {
                 font-size: 1.5rem;
@@ -4139,40 +4149,7 @@
                 padding: 2rem 0;
             }
 
-            .ceo-section {
-                padding: 2.5rem 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .ceo-message-container {
-                padding: 2rem 1.5rem;
-                margin: 2rem auto 0 auto !important;
-                width: 90%;
-                max-width: 100%;
-                border-radius: 16px;
-            }
-
-            .ceo-message-text {
-                font-size: 1rem;
-                line-height: 1.7;
-                text-align: left;
-                margin-bottom: 3rem;
-            }
-
-            .ceo-signature {
-                text-align: center;
-                padding-top: 2rem;
-            }
-
-            .ceo-signature::before {
-                display: none;
-            }
-
-            .ceo-signature strong {
-                font-size: 1.1rem;
-            }
+            /* CEO 관련 스타일은 768px 미디어쿼리에서 통일 관리됨 */
             
             .card-text,
             .message-text {
