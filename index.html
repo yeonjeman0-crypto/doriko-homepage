@@ -915,6 +915,7 @@
                 padding-left: 2.75rem;
                 color: #64748b;
                 font-size: 0.85rem;
+                margin-top: 0.25rem;
             }
             
             .mobile-org-divider {
@@ -1948,12 +1949,12 @@
             line-height: 1.5;
         }
 
-        /* New KPI Section Two-Tier Layout */
+        /* KPI Grid 통일 - 모두 4개 컬럼 */
         .kpi-row-first {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
             margin-top: 2rem;
         }
 
@@ -1961,6 +1962,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .kpi-box {
@@ -2467,15 +2469,38 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
 
-        /* Mission and Vision Container */
+        /* Mission and Vision Container - 통일된 2컬럼 */
         .mission-vision-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 4rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
             margin-bottom: 3rem;
         }
 
+        .mission-card,
+        .vision-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid rgba(30, 64, 175, 0.08);
+            transition: var(--transition);
+        }
+
+        .mission-card:hover,
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.15);
+        }
+        
+        /* 기존 호환성을 위해 유지 */
         .mission-section,
         .vision-section {
             width: 100%;
@@ -2483,20 +2508,18 @@
         
         .mission-section .card,
         .vision-section .card {
-            padding: 3.5rem 3rem;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem 2rem;
             min-height: 280px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid rgba(30, 64, 175, 0.08);
             transition: var(--transition);
-        }
-        
-        .mission-section .card:hover,
-        .vision-section .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(30, 64, 175, 0.15);
         }
         
         @media (max-width: 768px) {
@@ -3737,10 +3760,15 @@
             /* 모든 카드 크기 통일 */
             .card {
                 padding: 1.5rem;
-                min-height: 160px;
+                min-height: 140px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                background: white;
+                border: 1px solid rgba(30, 64, 175, 0.1);
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 95, 153, 0.08);
+                margin-bottom: 1rem;
             }
             
             .mission-section .card,
@@ -3756,26 +3784,42 @@
             
             .timeline-item {
                 padding: 1.5rem;
-                min-height: 140px;
+                min-height: 120px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-            }
-            
-            .timeline-year {
-                font-size: 0.95rem;
-                padding: 0.75rem 1.25rem;
+                background: white;
+                border: 1px solid rgba(30, 64, 175, 0.1);
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 95, 153, 0.08);
                 margin-bottom: 1rem;
             }
             
-            .timeline-content h3 {
-                font-size: 1.1rem;
+            .timeline-year {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
                 margin-bottom: 0.75rem;
+                background: var(--primary);
+                color: white;
+                border-radius: 6px;
+                font-weight: 600;
+                text-align: center;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                font-weight: 600;
             }
             
             .timeline-content p {
-                font-size: 0.9rem;
-                line-height: 1.5;
+                font-size: 0.85rem;
+                line-height: 1.4;
+                text-align: center;
             }
 
             .section {
@@ -3828,7 +3872,8 @@
             .stats-grid,
             .services-grid,
             .kpi-row-first,
-            .kpi-row-second {
+            .kpi-row-second,
+            .mission-vision-container {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
@@ -3956,11 +4001,23 @@
                 justify-content: center;
             }
 
-            /* Mobile text improvements */
+            /* Mobile text improvements - 텍스트 정리 */
             .card-text,
-            .service-description {
-                font-size: 0.9rem;
-                line-height: 1.6;
+            .service-description,
+            .kpi-desc,
+            .card h3,
+            .card h4 {
+                font-size: 0.85rem;
+                line-height: 1.5;
+                text-align: center;
+            }
+            
+            .card h2,
+            .card h3,
+            .card h4 {
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
+                font-weight: 600;
             }
 
             /* Mobile icons */
@@ -5488,7 +5545,7 @@
                 </p>
             </div>
             
-            <!-- First Row - 3 items (운영 실적) -->
+            <!-- First Row - 4 items (운영 실적) -->
             <div class="kpi-row-first">
                 <div class="kpi-box fade-in">
                     <div class="kpi-icon"><i class="fas fa-shield-alt"></i></div>
@@ -5509,6 +5566,13 @@
                     <div class="kpi-value">Zero</div>
                     <h4 class="kpi-label" data-i18n="kpi-incidents">중대사고 제로</h4>
                     <p class="kpi-desc" data-i18n="kpi-incidents-desc">철저한 안전관리를 통한 중대사고 방지</p>
+                </div>
+                
+                <div class="kpi-box fade-in">
+                    <div class="kpi-icon"><i class="fas fa-award"></i></div>
+                    <div class="kpi-value">100%</div>
+                    <h4 class="kpi-label" data-i18n="kpi-compliance">안전 운영 준수율</h4>
+                    <p class="kpi-desc" data-i18n="kpi-compliance-desc">국제 기준 완벽 준수</p>
                 </div>
             </div>
             
@@ -5536,10 +5600,10 @@
                 </div>
                 
                 <div class="kpi-box fade-in">
-                    <div class="kpi-icon"><i class="fas fa-award"></i></div>
-                    <div class="kpi-value">100%</div>
-                    <h4 class="kpi-label" data-i18n="kpi-compliance">안전 운영 준수율</h4>
-                    <p class="kpi-desc" data-i18n="kpi-compliance-desc">국제 기준 완벽 준수</p>
+                    <div class="kpi-icon"><i class="fas fa-users"></i></div>
+                    <div class="kpi-value">350+</div>
+                    <h4 class="kpi-label">전문 선원</h4>
+                    <p class="kpi-desc">숙련된 해상 전문 인력</p>
                 </div>
             </div>
         </div>
