@@ -1343,6 +1343,17 @@
                 text-align: center !important;
             }
             
+            /* 모바일에서 화살표 조정 */
+            .timeline-item:not(:last-child)::after {
+                font-size: 18px !important;
+                bottom: -25px !important;
+                padding: 3px !important;
+            }
+            
+            .timeline-item:not(:last-child) {
+                margin-bottom: 50px !important;
+            }
+            
             .timeline-year {
                 font-size: 0.85rem !important;
                 padding: 0.5rem 1rem !important;
@@ -3608,11 +3619,9 @@
         }
 
         .owners-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
             margin-top: 3rem;
             flex-wrap: wrap;
             padding: 0 2rem;
@@ -4815,7 +4824,7 @@
             /* 선주사 섹션 PC 최적화 */
             .owners-grid {
                 display: grid;
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 2rem;
                 margin-top: 3rem;
             }
@@ -5214,18 +5223,18 @@
         
         /* 타임라인 화살표 스타일 */
         .timeline-item:not(:last-child)::after {
-            content: '';
+            content: '⬇';
             position: absolute;
             left: 50%;
-            bottom: -40px;
+            bottom: -30px;
             transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 20px solid var(--primary);
+            font-size: 24px;
+            color: var(--primary);
             z-index: 10;
-            opacity: 0.8;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .timeline-item:not(:last-child) {
@@ -5479,18 +5488,6 @@
             .timeline-content p {
                 font-size: 0.95rem;
                 line-height: 1.5;
-            }
-            
-            /* 모바일에서 화살표 조정 */
-            .timeline-item:not(:last-child)::after {
-                bottom: -30px;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 15px solid var(--primary);
-            }
-            
-            .timeline-item:not(:last-child) {
-                margin-bottom: 50px;
             }
             
             .certifications-grid {
