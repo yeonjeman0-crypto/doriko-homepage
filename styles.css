@@ -1,0 +1,18 @@
+/* Doriko Homepage Styles */
+/* This file helps GitHub detect language diversity */
+
+:root {
+    --primary-color: #005f99;
+    --secondary-color: #f8fafc;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.github-language-fix {
+    /* This CSS file helps GitHub properly detect languages */
+    display: none;
+}
