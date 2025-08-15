@@ -1,9 +1,15 @@
 # GitHub language detection configuration
-*.html linguist-detectable=true
+index.html linguist-detectable=true
 *.css linguist-detectable=true  
 *.js linguist-detectable=true
 *.md linguist-documentation=true
 
-# Exclude specific files from language stats
+# Exclude backup HTML files and asset directories from language stats
+*backup*.html linguist-vendored=true
+*-backup-*.html linguist-vendored=true
+doriko-premium-blue*.html linguist-vendored=true
 .claude/* linguist-vendored=true
 HERO/* linguist-vendored=true
+"SVG Reference"/* linguist-vendored=true
+도리코로고/* linguist-vendored=true
+Korean.txt linguist-vendored=true
