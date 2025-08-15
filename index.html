@@ -936,6 +936,17 @@
             .desktop-only { display: none !important; }
             .mobile-only { display: block !important; }
             
+            /* 모바일 서비스 특징 압축 스타일 */
+            .service-features ul li:not(:first-child) {
+                display: none !important;
+            }
+            
+            .service-features ul li:first-child {
+                white-space: normal !important;
+                line-height: 1.6 !important;
+                padding: 0.8rem 0 !important;
+            }
+            
             /* 모바일 전용 조직도 스타일 */
             .mobile-org-chart {
                 padding: 1rem;
@@ -5842,7 +5853,7 @@
         }
         
         [lang="en"] .company-highlight-large {
-            font-size: clamp(0.6rem, 3vw, 1.0rem) !important;
+            font-size: clamp(0.45rem, 2.5vw, 0.8rem) !important;
             letter-spacing: -0.03em !important;
             line-height: 1.1 !important;
             font-weight: 700 !important;
@@ -6009,9 +6020,10 @@
             
             /* 모바일 영어 회사명 텍스트 크기 조정 */
             [lang="en"] .company-highlight-large {
-                font-size: 0.55rem !important;
+                font-size: 0.45rem !important;
                 white-space: nowrap !important;
                 overflow: visible !important;
+                letter-spacing: 0.5px !important;
             }
             
             [lang="en"] .hero-subtitle {
@@ -6830,6 +6842,10 @@
                     <div class="service-features">
                         <ul>
                             <li data-i18n="technical-feature1"><i class="fas fa-wrench" style="margin-right: 0.5rem; color: var(--secondary);"></i>정기 정비 및 수리 계획 수립</li>
+                            <li data-i18n="technical-feature2"><i class="fas fa-certificate" style="margin-right: 0.5rem; color: var(--secondary);"></i>선급 검사 및 관련 인증 관리</li>
+                            <li data-i18n="technical-feature3"><i class="fas fa-boxes" style="margin-right: 0.5rem; color: var(--secondary);"></i>예비품 및 소모품 조달 관리</li>
+                            <li data-i18n="technical-feature4"><i class="fas fa-tools" style="margin-right: 0.5rem; color: var(--secondary);"></i>입거수리 및 긴급 수리 대응</li>
+                            <li data-i18n="technical-feature5"><i class="fas fa-chart-line" style="margin-right: 0.5rem; color: var(--secondary);"></i>성능 모니터링 및 최적화 컨설팅</li>
                         </ul>
                     </div>
                 </div>
@@ -6850,6 +6866,10 @@
                     <div class="service-features">
                         <ul>
                             <li data-i18n="crew-feature1"><i class="fas fa-user-plus" style="margin-right: 0.5rem; color: var(--secondary);"></i>선원 채용 및 선발 관리</li>
+                            <li data-i18n="crew-feature2"><i class="fas fa-graduation-cap" style="margin-right: 0.5rem; color: var(--secondary);"></i>STCW 규정에 따른 교육 훈련</li>
+                            <li data-i18n="crew-feature3"><i class="fas fa-calendar-alt" style="margin-right: 0.5rem; color: var(--secondary);"></i>승선 배치 및 교대 계획 수립</li>
+                            <li data-i18n="crew-feature4"><i class="fas fa-hand-holding-usd" style="margin-right: 0.5rem; color: var(--secondary);"></i>선원 복리후생 및 급여 관리</li>
+                            <li data-i18n="crew-feature5"><i class="fas fa-heartbeat" style="margin-right: 0.5rem; color: var(--secondary);"></i>의료 지원 및 비상 대응</li>
                         </ul>
                     </div>
                 </div>
@@ -6870,6 +6890,9 @@
                     <div class="service-features">
                         <ul>
                             <li data-i18n="rightship-feature1"><i class="fas fa-star" style="margin-right: 0.5rem; color: var(--secondary);"></i>RightShip 등록 및 등급 관리</li>
+                            <li data-i18n="rightship-feature2"><i class="fas fa-file-alt" style="margin-right: 0.5rem; color: var(--secondary);"></i>Vetting 질의서 작성 및 대응</li>
+                            <li data-i18n="rightship-feature3"><i class="fas fa-search" style="margin-right: 0.5rem; color: var(--secondary);"></i>검사 준비 및 현장 시정조치</li>
+                            <li data-i18n="rightship-feature4"><i class="fas fa-check-circle" style="margin-right: 0.5rem; color: var(--secondary);"></i>Finding 개선 및 Close-out 지원</li>
                         </ul>
                     </div>
                 </div>
@@ -6889,7 +6912,11 @@
                     </p>
                     <div class="service-features">
                         <ul>
-                            <li data-i18n="newbuilding-feature1">설계 도면 검토 및 승인</li>
+                            <li data-i18n="newbuilding-feature1"><i class="fas fa-drafting-compass" style="margin-right: 0.5rem; color: var(--secondary);"></i>설계 도면 검토 및 승인</li>
+                            <li data-i18n="newbuilding-feature2"><i class="fas fa-eye" style="margin-right: 0.5rem; color: var(--secondary);"></i>건조 과정 모니터링 및 품질 관리</li>
+                            <li data-i18n="newbuilding-feature3"><i class="fas fa-cog" style="margin-right: 0.5rem; color: var(--secondary);"></i>시운전 및 성능 시험 참관</li>
+                            <li data-i18n="newbuilding-feature4"><i class="fas fa-clipboard-check" style="margin-right: 0.5rem; color: var(--secondary);"></i>인도 전 최종 검사 및 문제점 해결</li>
+                            <li data-i18n="newbuilding-feature5"><i class="fas fa-life-ring" style="margin-right: 0.5rem; color: var(--secondary);"></i>보증 기간 중 기술 지원</li>
                         </ul>
                     </div>
                 </div>
