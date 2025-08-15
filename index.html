@@ -478,8 +478,8 @@
             border-radius: 16px; 
             box-shadow: 0 12px 32px rgba(30,64,175,0.12), inset 0 1px 0 rgba(255,255,255,0.8); 
             padding: 2rem 1.5rem; 
-            width: 320px;
-            height: 140px;
+            width: 300px;
+            height: 120px;
             text-align: center; 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -503,16 +503,16 @@
         }
         
         .org-box.dp-box {
-            background: linear-gradient(135deg, #f8faff 0%, #fff7ed 100%);
-            border: 2px solid #f59e0b;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border: 2px solid var(--primary);
         }
         
         .org-box.dp-box::before {
-            background: linear-gradient(90deg, #f59e0b, #f97316);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
         
         .org-box.dp-box .org-title {
-            color: #ea580c;
+            color: var(--primary);
         }
         .org-box .org-title { 
             font-weight: 700; 
@@ -1357,13 +1357,21 @@
             
             /* 모바일에서 연결선 조정 */
             .timeline-item:not(:last-child)::after {
-                width: 2px !important;
-                height: 50px !important;
-                bottom: -25px !important;
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -20px;
+                transform: translateX(-50%);
+                width: 3px !important;
+                height: 40px !important;
+                background: linear-gradient(to bottom, var(--primary), var(--secondary));
+                z-index: 10;
+                border-radius: 2px;
+                box-shadow: 0 2px 8px rgba(0, 95, 153, 0.3);
             }
             
             .timeline-item:not(:last-child) {
-                margin-bottom: 50px !important;
+                margin-bottom: 40px !important;
             }
             
             .timeline-year {
@@ -4250,15 +4258,15 @@
             
             .timeline-item {
                 padding: 1.5rem;
-                min-height: 120px;
+                min-height: 180px;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
                 background: white;
                 border: 1px solid rgba(30, 64, 175, 0.1);
                 border-radius: 12px;
                 box-shadow: 0 4px 15px rgba(0, 95, 153, 0.08);
-                margin-bottom: 1rem;
+                margin-bottom: 40px;
             }
             
             .timeline-year {
@@ -5081,7 +5089,7 @@
             gap: 2rem;
         }
         .departments-row .org-box {
-            width: 340px;
+            width: 300px;
             font-size: 0.9rem;
         }
         .org-box {
@@ -5090,7 +5098,7 @@
             border-radius: var(--border-radius);
             padding: 1.5rem;
             text-align: center;
-            width: 272px;
+            width: 300px;
             height: 120px;
             transition: var(--transition);
             box-shadow: 0 5px 20px var(--shadow);
@@ -5107,7 +5115,7 @@
             background: var(--white);
             border: 2px solid var(--primary);
             color: var(--text-dark);
-            width: 272px;
+            width: 300px;
             height: 120px;
         }
         .org-title {
@@ -5162,6 +5170,10 @@
             position: relative;
             overflow: hidden;
             text-align: center;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .timeline-item::before {
@@ -5184,17 +5196,18 @@
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -30px;
+            bottom: -35px;
             transform: translateX(-50%);
-            width: 3px;
-            height: 60px;
+            width: 4px;
+            height: 70px;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
             z-index: 5;
             border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0, 95, 153, 0.3);
         }
         
         .timeline-item:not(:last-child) {
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
         .timeline-year {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -5209,6 +5222,10 @@
         }
         .timeline-content {
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .timeline-content h3 {
             color: var(--primary);
@@ -5397,8 +5414,9 @@
             }
             
             .org-box.dp-box {
-                background: linear-gradient(135deg, #f59e0b, #f97316);
-                color: var(--white);
+                background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+                border: 2px solid var(--primary);
+                color: var(--text-dark);
                 transform: none;
                 margin-bottom: 0.5rem;
                 width: 220px;
@@ -5408,7 +5426,7 @@
             
             .org-box.dp-box .org-title,
             .org-box.dp-box .org-desc {
-                color: var(--white);
+                color: var(--primary);
             }
             
             .org-level.dp-row::after {
