@@ -111,6 +111,19 @@
             border-radius: 3px;
         }
 
+        /* 포커스 관리 개선 */
+        *:focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: var(--focus-offset);
+            border-radius: var(--border-radius-sm);
+        }
+        
+        button:focus-visible,
+        a:focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: var(--focus-offset);
+        }
+        
         /* Enhanced icon animations */
         .fas, .far {
             transition: var(--transition);
@@ -177,6 +190,7 @@
         }
 
         :root {
+            /* 색상 체계 */
             --primary: #1e40af;
             --secondary: #3b82f6;
             --accent: #60a5fa;
@@ -184,20 +198,51 @@
             --green: #10b981;
             --light: #f8fafc;
             --dark: #1e40af;
-            --text-dark: #334155;
-            --gray: #475569;
-            --light-gray: #64748b;
+            
+            /* 텍스트 색상 - 접근성 개선 */
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            
+            /* 배경 색상 */
             --white: #ffffff;
             --silver: #c0c0c0;
             --light-silver: #e5e5e5;
+            
+            /* 그림자 */
             --shadow: rgba(30, 64, 175, 0.12);
             --hover-shadow: rgba(30, 64, 175, 0.18);
             --orange-shadow: rgba(249, 115, 22, 0.18);
             --green-shadow: rgba(16, 185, 129, 0.15);
+            
+            /* 그라데이션 */
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
             --bg-gradient: linear-gradient(135deg, #e5efff 0%, #f8fafc 100%);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* 간격 시스템 표준화 */
+            --spacing-xs: 0.5rem;  /* 8px */
+            --spacing-sm: 1rem;    /* 16px */
+            --spacing-md: 1.5rem;  /* 24px */
+            --spacing-lg: 2rem;    /* 32px */
+            --spacing-xl: 3rem;    /* 48px */
+            --spacing-2xl: 4rem;   /* 64px */
+            
+            /* 디자인 토큰 */
             --border-radius: 18px;
+            --border-radius-sm: 10px;
+            --border-radius-lg: 30px;
+            
+            /* 카드 그림자 */
+            --card-shadow: 0 10px 30px var(--shadow);
+            --card-hover-shadow: 0 20px 40px var(--hover-shadow);
+            
+            /* 포커스 관리 */
+            --focus-outline: 2px solid var(--accent);
+            --focus-offset: 2px;
+            
+            /* 트랜지션 */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --container-width: 1900px;
         }
 
@@ -209,7 +254,7 @@
         body {
             font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.7;
-            color: var(--gray);
+            color: var(--text-secondary);
             background: var(--bg-gradient);
             overflow-x: hidden;
             font-weight: 400;
@@ -463,17 +508,17 @@
         .owners-grid { 
             display: flex; 
             justify-content: center; 
-            gap: 1.5rem; 
+            gap: var(--spacing-md); 
             flex-wrap: nowrap; 
-            padding: 0 1rem;
+            padding: 0 var(--spacing-sm);
         }
         .owner-card { 
             background: #fff; 
             border: 1px solid rgba(30,64,175,.08); 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            padding: 1.5rem; 
-            transition: all 0.3s ease;
+            border-radius: var(--border-radius-sm); 
+            box-shadow: var(--card-shadow); 
+            padding: var(--spacing-md); 
+            transition: var(--transition);
             text-align: center;
             flex: 1;
             max-width: 200px;
@@ -482,21 +527,21 @@
         @media (max-width: 768px) { .owners-grid { flex-direction: column; align-items: center; gap: 1rem; } .owner-card { max-width: 300px; } }
 
         /* Modern Org chart styling */
-        .org-chart { display: grid; gap: 2rem; max-width: 1200px; margin: 0 auto; position: relative; }
-        .org-level { display: flex; justify-content: center; gap: 2rem; position: relative; }
+        .org-chart { display: grid; gap: var(--spacing-lg); max-width: 1200px; margin: 0 auto; position: relative; }
+        .org-level { display: flex; justify-content: center; gap: var(--spacing-lg); position: relative; }
         .org-level.ceo-row { justify-content: center; }
         .org-level.dp-row { justify-content: center; }
-        .org-level.departments-row { justify-content: center; gap: 2rem; }
+        .org-level.departments-row { justify-content: center; gap: var(--spacing-lg); }
         .org-box { 
             background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%); 
             border: 2px solid var(--primary); 
-            border-radius: 16px; 
+            border-radius: var(--border-radius-sm); 
             box-shadow: 0 12px 32px rgba(30,64,175,0.12), inset 0 1px 0 rgba(255,255,255,0.8); 
-            padding: 2rem 1.5rem; 
+            padding: var(--spacing-lg) var(--spacing-md); 
             width: 300px;
             height: 120px;
             text-align: center; 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
