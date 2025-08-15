@@ -6,10 +6,7 @@ index.html linguist-detectable=true
 
 # Exclude backup HTML files and asset directories from language stats
 *backup*.html linguist-vendored=true
-*-backup-*.html linguist-vendored=true
 doriko-premium-blue*.html linguist-vendored=true
 .claude/* linguist-vendored=true
 HERO/* linguist-vendored=true
-"SVG Reference"/* linguist-vendored=true
-도리코로고/* linguist-vendored=true
 Korean.txt linguist-vendored=true
