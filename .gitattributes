@@ -6,6 +6,4 @@
 
 # Exclude specific files from language stats
 .claude/* linguist-vendored=true
-SVG\ Reference/* linguist-vendored=true
 HERO/* linguist-vendored=true
-도리코로고/* linguist-vendored=true
