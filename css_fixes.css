@@ -1,0 +1,182 @@
+/* 도리코 홈페이지 문제점 해결 CSS */
+
+/* ========================================
+   1. 연혁 섹션 박스 크기 통일 및 연결선 개선
+   ======================================== */
+
+/* 연혁 박스 크기 통일 - 모든 박스를 동일한 최소 높이로 설정 */
+.timeline-item {
+    min-height: 280px !important; /* 모든 박스의 최소 높이 통일 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 2.5rem 2rem !important;
+}
+
+/* 연혁 박스 내부 콘텐츠 균등 분배 */
+.timeline-content {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* 연혁 연결선 개선 - 더 명확하고 일관된 표시 */
+.timeline-item:not(:last-child)::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 50% !important;
+    bottom: -35px !important;
+    transform: translateX(-50%) !important;
+    width: 4px !important;
+    height: 70px !important;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary)) !important;
+    z-index: 10 !important;
+    border-radius: 2px !important;
+    box-shadow: 0 2px 8px rgba(0, 95, 153, 0.3) !important;
+}
+
+/* 연혁 박스 간격 조정 */
+.timeline-item:not(:last-child) {
+    margin-bottom: 70px !important;
+}
+
+/* ========================================
+   2. 조직도 섹션 박스 크기 통일 및 색상 일관성
+   ======================================== */
+
+/* 모든 조직도 박스 크기 통일 */
+.org-box {
+    min-width: 300px !important;
+    max-width: 300px !important;
+    min-height: 120px !important;
+    padding: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* 안전보건 대표자 박스 색상 톤앤매너 맞춤 */
+.org-box.dp,
+.org-box:has([data-i18n*="dp"]),
+.org-level.dp-row .org-box {
+    border-color: var(--primary) !important; /* 주황색 대신 메인 블루 색상 사용 */
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%) !important;
+}
+
+/* 조직도 박스 hover 효과 통일 */
+.org-box:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(0, 95, 153, 0.15) !important;
+    border-color: var(--accent) !important;
+}
+
+/* ========================================
+   3. 전체적인 UI 일관성 개선
+   ======================================== */
+
+/* 모든 카드 요소들의 그림자 일관성 */
+.card, .timeline-item, .org-box, .owner-card {
+    box-shadow: 0 10px 30px rgba(0, 95, 153, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 카드 hover 효과 통일 */
+.card:hover, .timeline-item:hover, .org-box:hover, .owner-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 20px 50px rgba(0, 95, 153, 0.15) !important;
+}
+
+/* 텍스트 크기 일관성 */
+.timeline-content h3, .org-title {
+    font-size: 1.3rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.timeline-content p, .org-name {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+}
+
+/* ========================================
+   4. 모바일 반응형 개선
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* 모바일에서 연혁 박스 크기 통일 */
+    .timeline-item {
+        min-height: 200px !important;
+        padding: 1.5rem !important;
+        margin-bottom: 40px !important;
+    }
+    
+    /* 모바일에서 연결선 조정 */
+    .timeline-item:not(:last-child)::after {
+        height: 40px !important;
+        bottom: -20px !important;
+        width: 3px !important;
+    }
+    
+    /* 모바일에서 조직도 박스 크기 통일 */
+    .org-box {
+        min-width: 280px !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* ========================================
+   5. 접근성 및 사용성 개선
+   ======================================== */
+
+/* 포커스 스타일 개선 */
+.timeline-item:focus,
+.org-box:focus,
+.owner-card:focus {
+    outline: 3px solid var(--accent) !important;
+    outline-offset: 2px !important;
+}
+
+/* 애니메이션 성능 최적화 */
+.timeline-item,
+.org-box,
+.owner-card {
+    will-change: transform !important;
+    backface-visibility: hidden !important;
+}
+
+/* ========================================
+   6. 색상 변수 개선 (필요시 사용)
+   ======================================== */
+
+:root {
+    /* 기존 색상 보완 */
+    --shadow-light: rgba(0, 95, 153, 0.08);
+    --shadow-medium: rgba(0, 95, 153, 0.12);
+    --shadow-strong: rgba(0, 95, 153, 0.20);
+    
+    /* 호버 효과용 색상 */
+    --hover-shadow: rgba(0, 95, 153, 0.15);
+    --hover-primary: #004080;
+}
+
+/* ========================================
+   추가 권장사항: 성능 최적화
+   ======================================== */
+
+/* GPU 가속 활용 */
+.timeline-item::after,
+.org-box,
+.owner-card {
+    transform: translateZ(0) !important;
+}
+
+/* 불필요한 리플로우 방지 */
+.timeline,
+.org-chart,
+.owners-grid {
+    contain: layout style !important;
+}
