@@ -1,0 +1,11 @@
+# GitHub language detection configuration
+*.html linguist-detectable=true
+*.css linguist-detectable=true  
+*.js linguist-detectable=true
+*.md linguist-documentation=true
+
+# Exclude specific files from language stats
+.claude/* linguist-vendored=true
+SVG\ Reference/* linguist-vendored=true
+HERO/* linguist-vendored=true
+도리코로고/* linguist-vendored=true
