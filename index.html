@@ -5957,6 +5957,10 @@
         @media (max-width: 768px) {
             [lang="en"] .hero-title {
                 font-size: clamp(1.0rem, 4.8vw, 1.5rem) !important;
+                width: 100% !important;
+                max-width: calc(100vw - 2rem) !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
             }
             
             [lang="en"] .hero-subtitle {
@@ -5994,6 +5998,10 @@
             [lang="en"] .hero-title {
                 font-size: 1.8rem !important;
                 line-height: 1.3;
+                width: 100% !important;
+                max-width: calc(100vw - 2rem) !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
             }
             
             /* 모바일 영어 헤더 로고 크기 더 축소 */
