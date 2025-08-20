@@ -1,0 +1,39 @@
+{
+  "name": "doriko-homepage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@nuxt/image": "^1.8.1",
+    "@nuxt/kit": "^4.0.3",
+    "@nuxt/ui": "^3.3.0",
+    "@nuxtjs/i18n": "^10.0.3",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@vite-pwa/nuxt": "^0.10.5",
+    "nuxt": "^4.0.3",
+    "tailwindcss": "^3.4.17",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@nuxt/eslint": "^0.7.4",
+    "@typescript-eslint/parser": "^8.18.1",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.18.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "web-vitals": "^4.2.4"
+  }
+}

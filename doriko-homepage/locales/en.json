@@ -1,0 +1,217 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "fleet": "Fleet",
+    "insights": "Insights",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "DORIKO LIMITED",
+      "subtitle": "Maritime Excellence and Safety Leadership",
+      "description": "A global shipping leader providing safe and efficient maritime transport services with 30 years of experience",
+      "cta": "Explore Services",
+      "contact": "Contact Us"
+    },
+    "stats": {
+      "experience": "30+",
+      "experience_label": "Years Experience",
+      "fleet": "50+",
+      "fleet_label": "Vessels in Fleet",
+      "routes": "100+",
+      "routes_label": "Shipping Routes",
+      "safety": "99.9%",
+      "safety_label": "Safety Record"
+    },
+    "services": {
+      "title": "Professional Shipping Services",
+      "subtitle": "We provide customized solutions for various cargo and transportation requirements",
+      "shipping": {
+        "title": "Maritime Transport",
+        "description": "Safe and efficient container and bulk cargo shipping services"
+      },
+      "logistics": {
+        "title": "Logistics Management",
+        "description": "Supply chain optimization with integrated logistics solutions"
+      },
+      "trading": {
+        "title": "Trading Services", 
+        "description": "Professional consulting and brokerage services for global trade"
+      },
+      "technical": {
+        "title": "Technical Management",
+        "description": "Vessel maintenance and technical support services"
+      }
+    },
+    "why_choose": {
+      "title": "Why Choose DORIKO?",
+      "safety": {
+        "title": "Safety First",
+        "description": "Industry-leading safety standards and compliance"
+      },
+      "reliability": {
+        "title": "Reliable Service",
+        "description": "On-time delivery with tracking and monitoring"
+      },
+      "global": {
+        "title": "Global Network",
+        "description": "Extensive worldwide shipping routes and partners"
+      },
+      "sustainability": {
+        "title": "Eco-Friendly",
+        "description": "Committed to sustainable shipping practices"
+      }
+    },
+    "partners": {
+      "title": "Our Partners",
+      "subtitle": "Working with industry leaders worldwide"
+    },
+    "cta": {
+      "title": "Ready to Ship with Us?",
+      "subtitle": "Contact our team for a customized shipping solution",
+      "button": "Get Started"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About DORIKO LIMITED",
+      "subtitle": "Three Decades of Maritime Excellence"
+    },
+    "intro": {
+      "title": "Our Story",
+      "content": "Founded in 1994, DORIKO LIMITED has grown from a regional shipping company to a global maritime leader. With a commitment to safety, efficiency, and innovation, we have built a reputation for excellence in the shipping industry."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To provide world-class maritime transportation services that exceed customer expectations while maintaining the highest standards of safety and environmental responsibility."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "To be the preferred global shipping partner, recognized for innovation, reliability, and sustainable practices in maritime transportation."
+    },
+    "values": {
+      "title": "Our Values",
+      "safety": "Safety Excellence",
+      "integrity": "Integrity & Trust",
+      "innovation": "Innovation & Technology",
+      "sustainability": "Environmental Responsibility"
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "1994": "Company Founded",
+      "2000": "International Expansion",
+      "2010": "Fleet Modernization",
+      "2020": "Digital Transformation",
+      "2024": "Sustainability Leadership"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive Maritime Solutions"
+    },
+    "container": {
+      "title": "Container Shipping",
+      "description": "State-of-the-art container vessels for global cargo transportation",
+      "features": [
+        "20ft and 40ft containers",
+        "Refrigerated containers",
+        "Special equipment containers",
+        "Door-to-door delivery"
+      ]
+    },
+    "bulk": {
+      "title": "Bulk Cargo",
+      "description": "Specialized vessels for dry and liquid bulk cargo",
+      "features": [
+        "Dry bulk carriers",
+        "Liquid bulk tankers",
+        "Grain transportation",
+        "Chemical cargo handling"
+      ]
+    },
+    "project": {
+      "title": "Project Cargo",
+      "description": "Heavy lift and oversized cargo transportation",
+      "features": [
+        "Heavy machinery transport",
+        "Industrial equipment",
+        "Wind turbine components",
+        "Construction materials"
+      ]
+    },
+    "logistics": {
+      "title": "Integrated Logistics",
+      "description": "End-to-end supply chain management",
+      "features": [
+        "Warehousing services",
+        "Customs clearance",
+        "Inland transportation",
+        "Cargo insurance"
+      ]
+    }
+  },
+  "fleet": {
+    "hero": {
+      "title": "Our Fleet",
+      "subtitle": "Modern Vessels for Every Need"
+    },
+    "stats": {
+      "vessels": "Total Vessels",
+      "capacity": "Total Capacity",
+      "routes": "Active Routes",
+      "ports": "Ports Served"
+    },
+    "types": {
+      "container": "Container Ships",
+      "bulk": "Bulk Carriers",
+      "tanker": "Tankers",
+      "special": "Special Vessels"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Get in Touch with Our Team"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "123 Maritime Plaza, Seoul, South Korea",
+      "phone": "+82 2 1234 5678",
+      "email": "info@doriko.com",
+      "hours": "Mon-Fri: 9:00 AM - 6:00 PM KST"
+    },
+    "offices": {
+      "title": "Global Offices",
+      "seoul": "Seoul (Headquarters)",
+      "singapore": "Singapore",
+      "dubai": "Dubai",
+      "rotterdam": "Rotterdam"
+    }
+  },
+  "footer": {
+    "company": "Company",
+    "services": "Services",
+    "resources": "Resources",
+    "connect": "Connect",
+    "newsletter": {
+      "title": "Subscribe to Newsletter",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    },
+    "copyright": "© 2024 DORIKO LIMITED. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
