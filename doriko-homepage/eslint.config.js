@@ -1,6 +1,10 @@
-import withNuxt from '@nuxt/eslint/config'
+// @ts-check
+import { defineConfig } from 'eslint-define-config'
 
-export default withNuxt({
+export default defineConfig({
+  extends: [
+    '@nuxt/eslint-config'
+  ],
   rules: {
     // Vue specific rules
     'vue/multi-word-component-names': 'off',
@@ -22,7 +26,7 @@ export default withNuxt({
     'quotes': 'off',
     'semi': 'off'
   },
-  ignores: [
+  ignorePatterns: [
     'dist/',
     '.nuxt/',
     '.output/',

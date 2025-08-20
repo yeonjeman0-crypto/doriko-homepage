@@ -1,5 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  ssr: false,
+  target: 'static',
   
   modules: [
     '@nuxtjs/i18n',
@@ -10,10 +12,11 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt'
   ],
 
+
   vite: {
-    plugins: [
-      require('vite-tsconfig-paths').default()
-    ]
+    build: {
+      cssCodeSplit: false
+    }
   },
 
   i18n: {
@@ -46,7 +49,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: '/favicon.ico' },
-        { rel: 'stylesheet', href: '/main.css' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap', as: 'style' },
@@ -56,8 +58,11 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    output: {
+      publicDir: 'dist'
+    },
     prerender: {
-      routes: ['/sitemap.xml', '/robots.txt']
+      routes: ['/sitemap.xml', '/robots.txt', '/', '/about', '/services', '/fleet', '/contact', '/insights']
     },
     compressPublicAssets: true,
     routeRules: {
@@ -75,14 +80,13 @@ export default defineNuxtConfig({
       '/services': { prerender: true },
       '/fleet': { prerender: true },
       '/contact': { prerender: true },
-      '/insights': { isr: 3600 },
-      '/api/**': { 
-        cors: true,
-        headers: {
-          'x-content-type-options': 'nosniff',
-          'x-frame-options': 'DENY'
-        }
-      }
+      '/insights': { prerender: true },
+      '/en': { prerender: true },
+      '/en/about': { prerender: true },
+      '/en/services': { prerender: true },
+      '/en/fleet': { prerender: true },
+      '/en/contact': { prerender: true },
+      '/en/insights': { prerender: true }
     }
   },
 
@@ -101,8 +105,7 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    payloadExtraction: false,
-    inlineSSRStyles: false
+    payloadExtraction: false
   },
 
   // SEO and robots
