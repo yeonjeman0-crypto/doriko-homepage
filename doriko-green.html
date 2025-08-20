@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DORIKO LIMITED - 고객과 함께 성장하는, 신뢰 기반 선박 관리 전문기업</title>
+    <link rel="shortcut icon" href="홈페이지 만들기/assets/content/img/logo/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="홈페이지 만들기/assets/css/style.css">
+    <style>
+        /* Updated color scheme for DORIKO */
+        :root {
+            --primary-color: #005F99;
+            --secondary-color: #0077B6;
+            --accent-color: #00B4D8;
+            --neutral-color: #F6F9FC;
+        }
+
+        /* Language toggle button */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 95, 153, 0.9);
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(0, 119, 182, 0.9);
+        }
+
+        /* Override some colors in the existing CSS */
+        .navbar__phone--link {
+            color: var(--primary-color) !important;
+        }
+
+        .description-block-main__heading--title {
+            color: var(--primary-color) !important;
+        }
+
+        .services__icon-block--circle {
+            background: var(--accent-color) !important;
+        }
+
+        .components-block__head--link {
+            background: var(--primary-color) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Language Toggle Button -->
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        🇰🇷 한국어 / 🇺🇸 EN
+    </button>
+
+    <header class="header">
+        <div class="header__block-main">
+            <div class="video-block">
+                <video class="video-block--video" autoplay loop muted>
+                    <source src="홈페이지 만들기/assets/content/video/ship.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="content-block-main">
+                <nav class="navbar">
+                    <div class="container">
+                        <div class="navbar__content">
+                            <div class="navbar__logo">
+                                <a href="#" style="color: #005F99; font-weight: bold; font-size: 24px; text-decoration: none;">
+                                    DORIKO LIMITED
+                                </a>
+                            </div>
+                            <div class="navbar__menu">
+                                <ul class="navbar__list">
+                                    <li class="navbar__item" tabindex="0">
+                                        <a href="#home" class="navbar__link--active" id="nav-home">홈</a>
+                                    </li>
+                                    <li class="navbar__item">
+                                        <a href="#about" class="navbar__link" id="nav-about">회사소개</a>
+                                    </li>
+                                    <li class="navbar__item">
+                                        <a href="#services" class="navbar__link" id="nav-services">서비스</a>
+                                    </li>
+                                    <li class="navbar__item">
+                                        <a href="#contact" class="navbar__link" id="nav-contact">문의</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="navbar__phone">
+                                <a href="tel:+82-2-2021-7400" class="navbar__phone--link">+82-2-2021-7400</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="description-block-main">
+                    <div class="container">
+                        <div class="description-block-secondary-wrapper">
+                            <div class="description-block-main__text-block">
+                                <div class="description-block-main__overlay--triangle"></div>
+                                <div class="description-block-main__heading">
+                                    <h1 class="description-block-main__heading--title" id="hero-title1">고객과 함께 성장하는,</h1>
+                                    <h1 class="description-block-main__heading--title" id="hero-title2">신뢰 기반 선박 관리 전문기업</h1>
+                                </div>
+                                <div class="description-block-main__body">
+                                    <p class="description-block-main__body--description" id="hero-subtitle">
+                                        25년 이상의 풍부한 경험과 체계적인 전담 시스템으로 벌크선 7척, 자동차운반선 7척을 포함한 총 14척의 선박을 안정적으로 관리하며, 고객의 성공적인 비즈니스를 지원합니다.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="description-block-main__scroll-btn">
+                                <button type="button" id="description_block_main_scroll_btn">
+                                    <span id="scroll-text">아래로 스크롤</span>
+                                    <i class="fa-solid fa-chevron-down ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__overlay--circle"></div>
+        <div class="header__block-secondary">
+            <div class="header__color-block--black"></div>
+            <div class="content-block-secondary">
+                <div class="description-block-secondary">
+                    <div class="description-block-secondary__overlay--triangle"></div>
+                    <div class="container d-flex flex-row justify-content-between align-items-center">
+                        <div class="description-block-secondary__text-block">
+                            <div class="description-block-secondary__heading">
+                                <h1 class="description-block-secondary__heading--title" id="about-category">
+                                    - 회사소개
+                                </h1>
+                                <h1 class="description-block-secondary__heading--title" id="about-title">
+                                    깊은 신뢰와 탁월한 전문성으로 일궈내는 안전하고 지속가능한 해상 가치
+                                </h1>
+                            </div>
+                            <div class="description-block-secondary__body">
+                                <p class="description-block-secondary__body--description" id="about-desc1">
+                                    저희 도리코는 2000년 창립 이래, 국제적인 기준 준수와 독자적인 전담 Superintendent 시스템을 핵심으로 고객사의 소중한 선박을 안전하고 효율적으로 관리해 왔습니다. 급변하는 해운 환경 속에서도 고객 여러분의 자산 가치를 지속적으로 극대화하고, 더욱 신뢰받는 파트너가 되기 위해 끊임없이 노력하겠습니다.
+                                </p>
+                                <p class="description-block-secondary__body--description" id="about-desc2">
+                                    벌크선 7척과 자동차운반선 7척을 포함하여 총 14척의 선박을 체계적으로 관리하며, ISM·ISPS 인증을 통해 검증된 안전 관리 시스템을 운영하고 있습니다. 선박 기술 관리, 선원 관리, RightShip & Vetting 대응, 신조선 인수 관리 등의 포괄적인 서비스를 통해 고객의 성공적인 비즈니스를 지원합니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="description-block-secondary__img">
+                            <img src="홈페이지 만들기/assets/content/img/ship1.jpg" alt="Ship">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <section class="section">
+                <div class="section__heading">
+                    <h1 class="section__heading--category" id="service-area-category">- 주요 서비스 영역</h1>
+                    <p class="section__heading--title" id="service-area-title">전문 해상 서비스</p>
+                </div>
+                <div id="world_map"></div>
+                <div class="services">
+                    <div class="row">
+                        <div class="col-md-3 p-2">
+                            <div class="services__block">
+                                <div class="services__icon-block">
+                                    <div class="services__icon-block--circle"></div>
+                                    <div style="font-size: 32px; color: white;">🔧</div>
+                                </div>
+                                <div class="services__heading-block">
+                                    <a href="#technical" class="services__heading-block--title" id="service1-title">선박 기술 관리</a>
+                                    <p class="services__heading-block--description" id="service1-desc">
+                                        정기 검사, 정비 계획, KPI 모니터링을 아우르는 최적의 기술 관리 솔루션을 제공합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="services__block">
+                                <div class="services__icon-block">
+                                    <div class="services__icon-block--circle"></div>
+                                    <div style="font-size: 32px; color: white;">👥</div>
+                                </div>
+                                <div class="services__heading-block">
+                                    <a href="#crew" class="services__heading-block--title" id="service2-title">선원 관리</a>
+                                    <p class="services__heading-block--description" id="service2-desc">
+                                        다국적 선원의 채용부터 승선, 급여, 교육, 복지까지 모든 과정을 전문적으로 관리합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="services__block">
+                                <div class="services__icon-block">
+                                    <div class="services__icon-block--circle"></div>
+                                    <div style="font-size: 32px; color: white;">🛡️</div>
+                                </div>
+                                <div class="services__heading-block">
+                                    <a href="#vetting" class="services__heading-block--title" id="service3-title">RightShip & Vetting 대응</a>
+                                    <p class="services__heading-block--description" id="service3-desc">
+                                        RightShip, PSC 등 까다로운 외부 점검에 대한 완벽한 대응 및 지원을 약속드립니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="services__block">
+                                <div class="services__icon-block">
+                                    <div class="services__icon-block--circle"></div>
+                                    <div style="font-size: 32px; color: white;">🏗️</div>
+                                </div>
+                                <div class="services__heading-block">
+                                    <a href="#newbuilding" class="services__heading-block--title" id="service4-title">신조선 인수 관리</a>
+                                    <p class="services__heading-block--description" id="service4-desc">
+                                        신조선 건조 초기 단계부터 최종 인도까지 전 과정에 걸쳐 면밀히 감독합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section pt-0">
+                <div class="section__heading">
+                    <h1 class="section__heading--category" id="fleet-category">- 선대 현황</h1>
+                    <p class="section__heading--title" id="fleet-title">다양한 선종의 전문 관리</p>
+                </div>
+                <div class="components">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 py-2">
+                            <div class="components-block">
+                                <div class="components-block__overlay--radial"></div>
+                                <div class="components-block__overlay--linear"></div>
+                                <div class="components-block__overlay--img">
+                                    <img src="홈페이지 만들기/assets/content/img/ship2.jpg" alt="Bulk Carrier">
+                                </div>
+                                <div class="components-block__head">
+                                    <a href="#bulk" class="components-block__head--link">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="components-block__body">
+                                    <h1 class="components-block__body--title" id="bulk-title">
+                                        벌크선단 (7척)
+                                    </h1>
+                                    <p class="components-block__body--description" id="bulk-desc">
+                                        다양한 벌크 화물(철강재, 곡물, 석탄 등)의 안전하고 효율적인 운송에 최적화된 벌크선단을 운영합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 py-2">
+                            <div class="components-block">
+                                <div class="components-block__overlay--radial"></div>
+                                <div class="components-block__overlay--linear"></div>
+                                <div class="components-block__overlay--img">
+                                    <img src="홈페이지 만들기/assets/content/img/ship3.jpg" alt="PCTC">
+                                </div>
+                                <div class="components-block__head">
+                                    <a href="#pctc" class="components-block__head--link">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="components-block__body">
+                                    <h1 class="components-block__body--title" id="pctc-title">
+                                        자동차운반선단 (7척)
+                                    </h1>
+                                    <p class="components-block__body--description" id="pctc-desc">
+                                        최신 승용차, 상용차, 그리고 친환경 전기차까지, 특화된 기술로 안전하게 운송합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CEO Message Section -->
+            <section class="section" id="ceo" style="background: white; padding: 80px 0;">
+                <div class="container">
+                    <div class="section__heading">
+                        <h1 class="section__heading--category" id="ceo-category">- CEO 인사말</h1>
+                        <p class="section__heading--title" id="ceo-heading">안전하고 지속가능한 해상 가치 창출</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 60px; margin-top: 40px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #005F99;" id="ceo-greeting">깊은 신뢰와 탁월한 전문성으로 일궤내는, 안전하고 지속가능한 해상 가치</h3>
+                            <p style="font-size: 16px; line-height: 1.7; color: #666; margin-bottom: 20px;" id="ceo-message">
+                                저희 도리코는 2000년 창립 이래, 국제적인 기준 준수와 독자적인 전담 Superintendent 시스템을 핵심으로 고객사의 소중한 선박을 안전하고 효율적으로 관리해 왔습니다. 급변하는 해운 환경 속에서도 고객 여러분의 자산 가치를 지속적으로 극대화하고, 더욱 신뢰받는 파트너가 되기 위해 끝임없이 노력하겠습니다. 변함없는 지지와 성원에 진심으로 감사드립니다.
+                            </p>
+                            <p style="font-size: 18px; font-weight: 600; color: #005F99;" id="ceo-signature">
+                                대표이사 오효식
+                            </p>
+                        </div>
+                        <div style="width: 200px; height: 200px; background: linear-gradient(135deg, #00B4D8, #0077B6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 64px;">
+                            👨‍💼
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- ESG Section -->
+            <section class="section" id="esg">
+                <div class="container">
+                    <div class="section__heading">
+                        <h1 class="section__heading--category" id="esg-category">- ESG & 안전</h1>
+                        <p class="section__heading--title" id="esg-title">지속가능한 해운 운영과 최고 수준의 안전 관리</p>
+                    </div>
+                    <div class="services">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 p-2">
+                                <div class="services__block">
+                                    <div class="services__icon-block">
+                                        <div class="services__icon-block--circle"></div>
+                                        <div style="font-size: 32px; color: white;">🌱</div>
+                                    </div>
+                                    <div class="services__heading-block">
+                                        <a href="#environment" class="services__heading-block--title" id="env-title">지속가능한 환경 관리</a>
+                                        <p class="services__heading-block--description" id="env-desc">
+                                            글로벌 환경 규제에 선제적으로 대응하며, 지속 가능한 해양 생태계 보전을 위한 노력을 기울입니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 p-2">
+                                <div class="services__block">
+                                    <div class="services__icon-block">
+                                        <div class="services__icon-block--circle"></div>
+                                        <div style="font-size: 32px; color: white;">⛑️</div>
+                                    </div>
+                                    <div class="services__heading-block">
+                                        <a href="#safety" class="services__heading-block--title" id="health-title">안전하고 건강한 작업 환경</a>
+                                        <p class="services__heading-block--description" id="health-desc">
+                                            최우선 가치인 선원과 임직원의 안전 및 건강을 위한 체계적인 관리를 약속합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 p-2">
+                                <div class="services__block">
+                                    <div class="services__icon-block">
+                                        <div class="services__icon-block--circle"></div>
+                                        <div style="font-size: 32px; color: white;">🚨</div>
+                                    </div>
+                                    <div class="services__heading-block">
+                                        <a href="#serious" class="services__heading-block--title" id="serious-title">중대재해 예방 및 대응 시스템</a>
+                                        <p class="services__heading-block--description" id="serious-desc">
+                                            최고 수준의 중대재해처벌법(SAPA) 준수 및 예방 시스템을 운영합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 p-2">
+                                <div class="services__block">
+                                    <div class="services__icon-block">
+                                        <div class="services__icon-block--circle"></div>
+                                        <div style="font-size: 32px; color: white;">📚</div>
+                                    </div>
+                                    <div class="services__heading-block">
+                                        <a href="#training" class="services__heading-block--title" id="training-title">지속적인 역량 강화 교육</a>
+                                        <p class="services__heading-block--description" id="training-desc">
+                                            선원 및 육상 직원의 전문성과 안전 역량 강화를 위한 맞춤형 교육 프로그램을 제공합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <section class="footer__section">
+            <div class="footer__section-heading">
+                <h1 class="footer__section-heading--category" id="stats-category">- 도리코 현황</h1>
+                <p class="footer__section-heading--title" id="stats-title">신뢰받는 파트너십의 성과</p>
+            </div>
+            <div class="footer__section-overlay--triangle"></div>
+            <div style="display: flex; justify-content: center; align-items: center; padding: 60px 0;">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 60px; text-align: center; max-width: 800px;">
+                    <div>
+                        <h3 style="font-size: 48px; color: white; margin-bottom: 10px;">25+</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 14px; text-transform: uppercase;" id="stat1">년간의 우수성</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 48px; color: white; margin-bottom: 10px;">14</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 14px; text-transform: uppercase;" id="stat2">관리 선박</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 48px; color: white; margin-bottom: 10px;">24/7</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 14px; text-transform: uppercase;" id="stat3">비상 지원</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 48px; color: white; margin-bottom: 10px;">100%</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 14px; text-transform: uppercase;" id="stat4">안전 준수</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__contact">
+                    <a href="https://maps.google.com" target="_blank" class="footer__contact-block">
+                        <div class="footer__contact-block-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="footer__contact-block-info">
+                            <h1 class="footer__contact-block-info--title" id="seoul-title">
+                                서울 본사
+                            </h1>
+                            <p class="footer__contact-block-info--description" id="seoul-address">
+                                서울특별시 중구 서소문로 89, 순화빌딩 9층
+                            </p>
+                        </div>
+                    </a>
+                    <a href="tel:+82-2-2021-7400" class="footer__contact-block">
+                        <div class="footer__contact-block-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="footer__contact-block-info">
+                            <h1 class="footer__contact-block-info--title" id="phone-title">
+                                대표 전화
+                            </h1>
+                            <p class="footer__contact-block-info--description">
+                                +82-2-2021-7400
+                            </p>
+                        </div>
+                    </a>
+                    <a href="mailto:doriko@doriko.co.kr" class="footer__contact-block">
+                        <div class="footer__contact-block-icon">
+                            <i class="fas fa-at"></i>
+                        </div>
+                        <div class="footer__contact-block-info">
+                            <h1 class="footer__contact-block-info--title" id="email-title">
+                                이메일
+                            </h1>
+                            <p class="footer__contact-block-info--description">
+                                doriko@doriko.co.kr
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__nav-about">
+                        <h1 class="footer__nav-about--title">
+                            <strong>DORIKO</strong> LIMITED
+                        </h1>
+                        <p class="footer__nav-about--description" id="footer-desc">
+                            25년 이상의 경험과 전문성을 바탕으로 아시아태평양 지역의 선도적인 해상 서비스를 제공하는 
+                            신뢰받는 선박관리 및 해상 컨설팅 회사입니다.
+                        </p>
+                    </div>
+                    <div class="footer__nav-navigation">
+                        <div class="footer__nav-navigation--navbar">
+                            <h1 class="footer__nav-navigation--title" id="nav-title">메뉴</h1>
+                            <ul class="footer__nav-menu">
+                                <li class="footer__nav-menu--item">
+                                    <a href="#home" class="footer__nav-menu--link footer__nav-menu--link-active" id="footer-home">홈</a>
+                                </li>
+                                <li class="footer__nav-menu--item">
+                                    <a href="#about" class="footer__nav-menu--link" id="footer-about">회사소개</a>
+                                </li>
+                                <li class="footer__nav-menu--item">
+                                    <a href="#services" class="footer__nav-menu--link" id="footer-services">서비스</a>
+                                </li>
+                                <li class="footer__nav-menu--item">
+                                    <a href="#contact" class="footer__nav-menu--link" id="footer-contact">문의</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer__nav-navigation--social">
+                            <div class="footer__nav-social">
+                                <a href="#" class="footer__nav-social-icon">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="footer__nav-social-icon">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="footer__bottom-copyright">
+                    <p class="footer__bottom-copyright--description" id="copyright">
+                        &copy; 2024 DORIKO LIMITED. <span id="rights">All rights reserved.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="홈페이지 만들기/assets/js/jquery.min.js"></script>
+    <script src="홈페이지 만들기/assets/plugins/jvectormap/js/jquery.min.js"></script>
+    <script src="홈페이지 만들기/assets/plugins/jvectormap/js/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="홈페이지 만들기/assets/plugins/jvectormap/js/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="홈페이지 만들기/assets/js/anime.min.js"></script>
+    <script src="홈페이지 만들기/assets/js/fa.min.js"></script>
+    <script src="홈페이지 만들기/assets/js/owl.carousel.min.js"></script>
+    <script src="홈페이지 만들기/assets/js/script.js"></script>
+    
+    <script>
+        let isKorean = true;
+
+        const translations = {
+            ko: {
+                // Navigation
+                navHome: "홈",
+                navAbout: "회사소개", 
+                navServices: "서비스",
+                navContact: "문의",
+                
+                // Hero Section
+                heroTitle1: "고객과 함께 성장하는,",
+                heroTitle2: "신뢰 기반 선박 관리 전문기업",
+                heroSubtitle: "25년 이상의 풍부한 경험과 체계적인 전담 시스템으로 벌크선 7척, 자동차운반선 7척을 포함한 총 14척의 선박을 안정적으로 관리하며, 고객의 성공적인 비즈니스를 지원합니다.",
+                scrollText: "아래로 스크롤",
+                
+                // About Section
+                aboutCategory: "- 회사소개",
+                aboutTitle: "깊은 신뢰와 탁월한 전문성으로 일궈내는 안전하고 지속가능한 해상 가치",
+                aboutDesc1: "저희 도리코는 2000년 창립 이래, 국제적인 기준 준수와 독자적인 전담 Superintendent 시스템을 핵심으로 고객사의 소중한 선박을 안전하고 효율적으로 관리해 왔습니다. 급변하는 해운 환경 속에서도 고객 여러분의 자산 가치를 지속적으로 극대화하고, 더욱 신뢰받는 파트너가 되기 위해 끊임없이 노력하겠습니다.",
+                aboutDesc2: "벌크선 7척과 자동차운반선 7척을 포함하여 총 14척의 선박을 체계적으로 관리하며, ISM·ISPS 인증을 통해 검증된 안전 관리 시스템을 운영하고 있습니다. 선박 기술 관리, 선원 관리, RightShip & Vetting 대응, 신조선 인수 관리 등의 포괄적인 서비스를 통해 고객의 성공적인 비즈니스를 지원합니다.",
+                
+                // Service Area
+                serviceAreaCategory: "- 주요 서비스 영역",
+                serviceAreaTitle: "전문 해상 서비스",
+                
+                // Services
+                service1Title: "선박 기술 관리",
+                service1Desc: "정기 검사, 정비 계획, KPI 모니터링을 아우르는 최적의 기술 관리 솔루션을 제공합니다.",
+                service2Title: "선원 관리", 
+                service2Desc: "다국적 선원의 채용부터 승선, 급여, 교육, 복지까지 모든 과정을 전문적으로 관리합니다.",
+                service3Title: "RightShip & Vetting 대응",
+                service3Desc: "RightShip, PSC 등 까다로운 외부 점검에 대한 완벽한 대응 및 지원을 약속드립니다.",
+                service4Title: "신조선 인수 관리",
+                service4Desc: "신조선 건조 초기 단계부터 최종 인도까지 전 과정에 걸쳐 면밀히 감독합니다.",
+                
+                // Fleet
+                fleetCategory: "- 선대 현황",
+                fleetTitle: "다양한 선종의 전문 관리",
+                bulkTitle: "벌크선단 (7척)",
+                bulkDesc: "다양한 벌크 화물(철강재, 곡물, 석탄 등)의 안전하고 효율적인 운송에 최적화된 벌크선단을 운영합니다.",
+                pctcTitle: "자동차운반선단 (7척)",
+                pctcDesc: "최신 승용차, 상용차, 그리고 친환경 전기차까지, 특화된 기술로 안전하게 운송합니다.",
+                
+                // Stats
+                statsCategory: "- 도리코 현황",
+                statsTitle: "신뢰받는 파트너십의 성과",
+                stat1: "년간의 우수성",
+                stat2: "관리 선박",
+                stat3: "비상 지원", 
+                stat4: "안전 준수",
+                
+                // Footer
+                seoulTitle: "서울 본사",
+                seoulAddress: "서울특별시 중구 서소문로 89, 순화빌딩 9층",
+                phoneTitle: "대표 전화",
+                emailTitle: "이메일",
+                footerDesc: "25년 이상의 경험과 전문성을 바탕으로 아시아태평양 지역의 선도적인 해상 서비스를 제공하는 신뢰받는 선박관리 및 해상 컨설팅 회사입니다.",
+                navTitle: "메뉴",
+                footerHome: "홈",
+                footerAbout: "회사소개",
+                footerServices: "서비스", 
+                footerContact: "문의",
+                copyright: "&copy; 2024 DORIKO LIMITED.",
+                rights: "All rights reserved."
+            },
+            en: {
+                // Navigation
+                navHome: "Home",
+                navAbout: "About Us",
+                navServices: "Services", 
+                navContact: "Contact",
+                
+                // Hero Section
+                heroTitle1: "A Trusted Ship Management Expert",
+                heroTitle2: "Growing with Clients",
+                heroSubtitle: "With over 25 years of extensive experience and a systematic dedicated superintendent system, we stably manage a total of 14 vessels, including 7 bulk carriers and 7 PCTCs, supporting our clients' successful businesses.",
+                scrollText: "Scroll Down",
+                
+                // About Section
+                aboutCategory: "- About Us",
+                aboutTitle: "Achieving Safe and Sustainable Maritime Value Through Deep Trust and Excellent Expertise",
+                aboutDesc1: "Since our founding in 2000, DORIKO has focused on adhering to international standards and leveraging our unique dedicated Superintendent system to safely and efficiently manage our clients' valuable vessels. In the rapidly evolving maritime landscape, we are committed to continuously maximizing the value of your assets and striving to become an even more trusted partner.",
+                aboutDesc2: "We systematically manage a total of 14 vessels, including 7 bulk carriers and 7 car carriers, and operate a verified safety management system through ISM·ISPS certification. We support our clients' successful businesses through comprehensive services including technical ship management, crew management, RightShip & Vetting compliance, and newbuilding delivery management.",
+                
+                // Service Area
+                serviceAreaCategory: "- Key Service Areas",
+                serviceAreaTitle: "Professional Maritime Services",
+                
+                // Services
+                service1Title: "Technical Ship Management",
+                service1Desc: "We provide optimal technical management solutions encompassing regular inspections, maintenance planning, and KPI monitoring.",
+                service2Title: "Crew Management",
+                service2Desc: "We expertly manage the entire process for multinational crew, from recruitment and embarkation to payroll, training, and welfare.",
+                service3Title: "RightShip & Vetting Compliance",
+                service3Desc: "We promise comprehensive support and perfect response to demanding external inspections such as RightShip and PSC.",
+                service4Title: "Newbuilding Delivery Management",
+                service4Desc: "We provide meticulous supervision throughout the entire newbuilding process, from the initial construction phase to final delivery.",
+                
+                // Fleet
+                fleetCategory: "- Our Fleet",
+                fleetTitle: "Professional Management of Various Vessel Types",
+                bulkTitle: "Bulk Carrier Fleet (7 Vessels)",
+                bulkDesc: "We operate a bulk carrier fleet optimized for safe and efficient transportation of various bulk cargo (steel, grain, coal, etc.).",
+                pctcTitle: "Car Carrier Fleet (7 Vessels)", 
+                pctcDesc: "From the latest passenger cars and commercial vehicles to eco-friendly electric vehicles, we transport them safely with specialized technology.",
+                
+                // Stats
+                statsCategory: "- DORIKO Status",
+                statsTitle: "Results of Trusted Partnership",
+                stat1: "Years of Excellence",
+                stat2: "Managed Vessels",
+                stat3: "Emergency Support",
+                stat4: "Safety Compliance",
+                
+                // Footer
+                seoulTitle: "Seoul Headquarters",
+                seoulAddress: "9F, Sunhwa Bldg, 89 Seosomun-ro, Jung-gu, Seoul, Republic of Korea",
+                phoneTitle: "Main Phone",
+                emailTitle: "Email",
+                footerDesc: "A trusted ship management and maritime consulting company providing leading maritime services in the Asia-Pacific region with over 25 years of experience and expertise.",
+                navTitle: "Navigation",
+                footerHome: "Home",
+                footerAbout: "About Us",
+                footerServices: "Services",
+                footerContact: "Contact",
+                copyright: "&copy; 2024 DORIKO LIMITED.",
+                rights: "All rights reserved."
+            }
+        };
+
+        function toggleLanguage() {
+            isKorean = !isKorean;
+            const lang = isKorean ? 'ko' : 'en';
+            const t = translations[lang];
+            
+            // Update language toggle button
+            document.querySelector('.lang-toggle').textContent = isKorean ? '🇰🇷 한국어 / 🇺🇸 EN' : '🇺🇸 EN / 🇰🇷 한국어';
+            
+            // Update all elements
+            Object.keys(t).forEach(key => {
+                const element = document.getElementById(key.replace(/([A-Z])/g, '-$1').toLowerCase());
+                if (element) {
+                    if (key === 'copyright') {
+                        element.innerHTML = t[key] + ' <span id="rights">' + t.rights + '</span>';
+                    } else {
+                        element.textContent = t[key];
+                    }
+                }
+            });
+        }
+
+        // Initialize smooth scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

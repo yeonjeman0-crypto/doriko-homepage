@@ -3,7 +3,31 @@
     "allow": [
       "Bash(npx:*)",
       "Bash(ls:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(yarn dev:*)",
+      "Bash(grep:*)",
+      "Bash(SuperClaude install)",
+      "Bash(python -m pip install:*)",
+      "Bash(SuperClaude install --profile developer)",
+      "Bash(PYTHONIOENCODING=utf-8 SuperClaude install --profile developer --yes)",
+      "Bash(SuperClaude install --minimal --yes)",
+      "Bash(SuperClaude status)",
+      "Bash(node_modules.binnuxt dev)",
+      "mcp__sequential-thinking__sequentialthinking",
+      "Bash(cp:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(npm start)",
+      "Bash(npm run dev:*)",
+      "Bash(icacls:*)",
+      "Bash(echo $USER)",
+      "Bash(echo $HOME)",
+      "Bash(env)",
+      "Bash(npm uninstall:*)",
+      "Bash(curl:*)",
+      "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-enhanced-final.html\")",
+      "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-premium-blue.html\")"
     ],
     "deny": []
   }

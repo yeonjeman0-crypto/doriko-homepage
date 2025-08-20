@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page-title">DORIKO LIMITED - 해운 우수성과 안전 리더십</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --secondary: #0ea5e9;
+            --secondary-light: #38bdf8;
+            --accent: #06b6d4;
+            --accent-light: #22d3ee;
+            --ocean-blue: #0c4a6e;
+            --light-blue: #e0f2fe;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: rgba(15, 23, 42, 0.08);
+            --shadow-lg: rgba(15, 23, 42, 0.15);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 20px;
+            --border-radius-sm: 12px;
+            --container-width: 1400px;
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--ocean-blue) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 50%, var(--accent) 100%);
+            --gradient-ocean: linear-gradient(135deg, #0c4a6e 0%, #0369a1 25%, #0284c7 50%, #0ea5e9 75%, #38bdf8 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark);
+            margin: 0;
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+        p {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Enhanced Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--ocean-blue));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .loading.fade-out {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 2rem;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: logoFloat 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 2s linear infinite;
+        }
+
+        .loading-logo img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid var(--accent-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(-10px) scale(1); }
+            50% { transform: translateY(10px) scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Enhanced Navigation with Glassmorphism */
+        .navbar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+            box-shadow: 0 8px 40px rgba(15, 23, 42, 0.15);
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1.2rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            opacity: 0.1;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Video Hero Section with Parallax */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(12, 74, 110, 0.6) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+            padding: 0 2rem;
+            animation: heroFadeIn 1.5s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        /* Enhanced Stats Section with Glassmorphism */
+        .stats {
+            background: var(--gradient-ocean);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.3;
+        }
+
+        .stats-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+            counter-reset: counter;
+            animation: countUp 2s ease-out;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        @keyframes countUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(248, 250, 252, 0.8) 100%);
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+
+        /* Enhanced Cards with Glassmorphism */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .enhanced-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.1);
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            transform: rotate(45deg) translate(-50%, -50%);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .enhanced-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(15, 23, 42, 0.15);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, var(--secondary), var(--accent)) border-box;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+
+        .card-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .card-description {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Fleet Section with Enhanced Visuals */
+        .fleet-section {
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fleet-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0 40 Q25 20 50 40 T100 40 V100 H0 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E") repeat-x;
+            background-size: 200px 100px;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 200px; }
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 4rem;
+        }
+
+        .fleet-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .fleet-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .fleet-card:hover::after {
+            opacity: 1;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
+        }
+
+        .fleet-header {
+            background: var(--gradient-secondary);
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .fleet-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
+        }
+
+        .fleet-card:hover .fleet-image {
+            transform: scale(1.1);
+        }
+
+        .fleet-header h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .fleet-specs {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .fleet-content {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .fleet-features {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: var(--border-radius-sm);
+            border-left: 4px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-sm);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: var(--gradient-secondary);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInRight 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .card-grid,
+            .fleet-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .enhanced-card,
+            .fleet-card {
+                padding: 2rem;
+            }
+
+            .hero-cta {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-secondary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
+        }
+
+        /* SVG Decorative Elements */
+        .decorative-svg {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .decorative-svg.top-left {
+            top: 10%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .decorative-svg.bottom-right {
+            bottom: 10%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-logo">
+            <img src="image & video/Company Logo (Square).png" alt="DORIKO LIMITED" onerror="this.style.display='none'">
+        </div>
+        <div class="loading-text">DORIKO LIMITED</div>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Enhanced Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="image & video/Company Logo (Square).png" alt="DORIKO LIMITED" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">DORIKO</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-i18n="nav-home">
+                        <i class="fas fa-home"></i> 홈
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-i18n="nav-about">
+                        <i class="fas fa-info-circle"></i> 회사소개
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link" data-i18n="nav-services">
+                        <i class="fas fa-cogs"></i> 서비스
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#fleet" class="nav-link" data-i18n="nav-fleet">
+                        <i class="fas fa-ship"></i> 선박현황
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-i18n="nav-contact">
+                        <i class="fas fa-envelope"></i> 연락처
+                    </a>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Video Hero Section with Parallax -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="image & video/30d051ff88.mp4" type="video/mp4">
+            <source src="image & video/3d1ff4dc6b.mp4" type="video/mp4">
+            <source src="image & video/c42c41fe01.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="hero-title">DORIKO LIMITED</h1>
+            <p class="hero-subtitle" data-i18n="hero-subtitle">
+                글로벌 해운업계의 리더로서 안전하고 효율적인 해상 운송 서비스를 제공합니다.<br>
+                혁신적인 기술과 지속가능한 운영으로 미래를 선도합니다.
+            </p>
+            <a href="#about" class="hero-cta" data-i18n="hero-cta">
+                <i class="fas fa-anchor"></i> 더 알아보기
+            </a>
+        </div>
+
+        <!-- SVG Decorative Elements -->
+        <div class="decorative-svg top-left">
+            <svg viewBox="0 0 100 100" fill="currentColor">
+                <path d="M20,20 Q50,0 80,20 Q100,50 80,80 Q50,100 20,80 Q0,50 20,20 Z" fill="rgba(255,255,255,0.1)"/>
+            </svg>
+        </div>
+        <div class="decorative-svg bottom-right">
+            <svg viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="10" fill="rgba(255,255,255,0.1)"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Enhanced Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label" data-i18n="stat-experience">년간 경험</div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label" data-i18n="stat-ships">보유 선박</div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label" data-i18n="stat-countries">서비스 국가</div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label" data-i18n="stat-crew">승무원</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title" data-i18n="about-title">회사 소개</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle" data-i18n="about-subtitle">
+                    DORIKO LIMITED는 혁신적인 해운 솔루션과 지속가능한 운영으로 
+                    글로벌 해운업계를 선도하는 신뢰받는 파트너입니다.
+                </p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="enhanced-card fade-in-left">
+                    <div class="card-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="about-global-title">글로벌 네트워크</h3>
+                    <p class="card-description" data-i18n="about-global-desc">
+                        전 세계 주요 항구와 연결된 광범위한 네트워크를 통해 
+                        효율적이고 안전한 해상 운송 서비스를 제공합니다.
+                    </p>
+                </div>
+                <div class="enhanced-card fade-in-up">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="about-sustainable-title">지속가능성</h3>
+                    <p class="card-description" data-i18n="about-sustainable-desc">
+                        친환경 기술과 운영 방식을 도입하여 해양 환경 보호와 
+                        지속가능한 미래를 위해 노력합니다.
+                    </p>
+                </div>
+                <div class="enhanced-card fade-in-right">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="about-safety-title">안전 관리</h3>
+                    <p class="card-description" data-i18n="about-safety-desc">
+                        최고 수준의 안전 관리 시스템과 국제 기준을 준수하여 
+                        승무원과 화물의 안전을 최우선으로 보장합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title" data-i18n="services-title">서비스</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle" data-i18n="services-subtitle">
+                    다양한 화물 유형과 고객의 요구에 맞는 맞춤형 해운 솔루션을 제공합니다.
+                </p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="enhanced-card fade-in-left">
+                    <div class="card-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="service-bulk-title">벌크 운송</h3>
+                    <p class="card-description" data-i18n="service-bulk-desc">
+                        철광석, 석탄, 곡물 등 다양한 벌크 화물의 안전하고 
+                        효율적인 해상 운송 서비스를 제공합니다.
+                    </p>
+                </div>
+                <div class="enhanced-card fade-in-up">
+                    <div class="card-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="service-vehicle-title">차량 운송</h3>
+                    <p class="card-description" data-i18n="service-vehicle-desc">
+                        승용차, 상용차, 중장비 등 모든 종류의 차량을 
+                        안전하게 운송하는 전문 서비스를 제공합니다.
+                    </p>
+                </div>
+                <div class="enhanced-card fade-in-right">
+                    <div class="card-icon">
+                        <i class="fas fa-anchor"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="service-logistics-title">해운 물류</h3>
+                    <p class="card-description" data-i18n="service-logistics-desc">
+                        통합 물류 솔루션을 통해 고객의 공급망 최적화와 
+                        비용 절감을 지원하는 전문 서비스입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section with Enhanced Visuals -->
+    <section class="section fleet-section" id="fleet">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title" style="color: white;" data-i18n="fleet-title">선박 현황</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);" data-i18n="fleet-subtitle">
+                    최신 기술과 엄격한 안전 기준을 적용한 현대적이고 효율적인 선박들을 보유하고 있습니다.
+                </p>
+            </div>
+            
+            <div class="fleet-grid">
+                <div class="fleet-card fade-in-left">
+                    <div class="fleet-header">
+                        <img src="image & video/Bulk Carrier.png" alt="Bulk Carrier" class="fleet-image" onerror="this.style.display='none'">
+                        <h3 data-i18n="fleet-bulk-title">벌크 캐리어</h3>
+                        <p class="fleet-specs" data-i18n="fleet-bulk-specs">DWT: 180,000 톤 | 길이: 300m</p>
+                    </div>
+                    <div class="fleet-content">
+                        <div class="fleet-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-weight-hanging"></i>
+                                </div>
+                                <div>
+                                    <h4>대용량 운송</h4>
+                                    <p>철광석, 석탄, 곡물 등 대량 화물 운송</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <div>
+                                    <h4>첨단 시설</h4>
+                                    <p>최신 하역 시설과 자동화 시스템</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div>
+                                    <h4>친환경 운영</h4>
+                                    <p>환경 규제 준수 및 연료 효율성</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fleet-card fade-in-right">
+                    <div class="fleet-header">
+                        <img src="image & video/Car Carrier.png" alt="Car Carrier" class="fleet-image" onerror="this.style.display='none'">
+                        <h3 data-i18n="fleet-car-title">카 캐리어</h3>
+                        <p class="fleet-specs" data-i18n="fleet-car-specs">차량 적재: 6,000대 | 길이: 200m</p>
+                    </div>
+                    <div class="fleet-content">
+                        <div class="fleet-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div>
+                                    <h4>차량 전용</h4>
+                                    <p>승용차, 트럭, 특수차량 운송</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>안전 보장</h4>
+                                    <p>차량 손상 방지 및 보안 시스템</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>신속 운송</h4>
+                                    <p>정시 배송과 효율적인 물류</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title" style="color: white;" data-i18n="contact-title">연락처</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);" data-i18n="contact-subtitle">
+                    언제든지 문의해 주세요. 전문적인 해운 서비스에 대한 상담을 제공해 드립니다.
+                </p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info fade-in-left">
+                    <h2 data-i18n="contact-info-title">연락 정보</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="contact-address-title">주소</h4>
+                            <p data-i18n="contact-address">부산광역시 중구 해운대로 123</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="contact-phone-title">전화번호</h4>
+                            <p>+82-51-123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="contact-email-title">이메일</h4>
+                            <p>info@doriko.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in-right">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" data-i18n="form-name">이름</label>
+                            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="form-email">이메일</label>
+                            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" data-i18n="form-subject">제목</label>
+                            <input type="text" id="subject" name="subject" placeholder="문의 제목을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="form-message">메시지</label>
+                            <textarea id="message" name="message" rows="5" placeholder="문의 내용을 입력하세요"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-i18n="form-submit">
+                            메시지 보내기 <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DORIKO LIMITED</h3>
+                    <p>혁신적인 해운 솔루션으로 글로벌 물류의 미래를 선도하는 신뢰받는 파트너입니다.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>빠른 링크</h3>
+                    <p><a href="#home">홈</a></p>
+                    <p><a href="#about">회사소개</a></p>
+                    <p><a href="#services">서비스</a></p>
+                    <p><a href="#fleet">선박현황</a></p>
+                    <p><a href="#contact">연락처</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>서비스</h3>
+                    <p>벌크 운송</p>
+                    <p>차량 운송</p>
+                    <p>해운 물류</p>
+                    <p>컨설팅</p>
+                </div>
+                <div class="footer-section">
+                    <h3>연락처</h3>
+                    <p><i class="fas fa-phone"></i> +82-51-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@doriko.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 부산광역시 중구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DORIKO LIMITED. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Enhanced Loading Animation
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.classList.add('fade-out');
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 800);
+            }, 2000);
+        });
+
+        // Enhanced Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = window.pageYOffset;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 90;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Animated Counter for Stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    counter.textContent = Math.floor(current);
+                    
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 16);
+            });
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.2s';
+                    entry.target.style.animationFillMode = 'forwards';
+                    
+                    // Trigger counter animation for stats section
+                    if (entry.target.closest('.stats')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Parallax Effect for Hero Video
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-video');
+            const speed = 0.5;
+            
+            if (parallax) {
+                parallax.style.transform = `translate3d(-50%, calc(-50% + ${scrolled * speed}px), 0)`;
+            }
+        });
+
+        // Enhanced Form Submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 전송 중...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('메시지가 성공적으로 전송되었습니다!');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Enhanced Video Loading
+        const heroVideo = document.querySelector('.hero-video');
+        if (heroVideo) {
+            heroVideo.addEventListener('loadeddata', function() {
+                this.style.opacity = '1';
+            });
+            
+            // Ensure video plays on mobile
+            heroVideo.addEventListener('canplay', function() {
+                this.play().catch(e => console.log('Video autoplay failed:', e));
+            });
+        }
+
+        // Add dynamic background particles
+        function createParticles() {
+            const particleContainer = document.createElement('div');
+            particleContainer.className = 'particle-container';
+            particleContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            `;
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    background: rgba(14, 165, 233, 0.3);
+                    border-radius: 50%;
+                    animation: floatParticle ${5 + Math.random() * 10}s linear infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation-delay: ${Math.random() * 10}s;
+                `;
+                particleContainer.appendChild(particle);
+            }
+            
+            document.body.appendChild(particleContainer);
+        }
+
+        // Add particle animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatParticle {
+                0% {
+                    transform: translateY(0px) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize particles
+        createParticles();
+
+        // Enhanced loading with progress
+        let loadProgress = 0;
+        const loadingInterval = setInterval(() => {
+            loadProgress += Math.random() * 15;
+            if (loadProgress >= 100) {
+                loadProgress = 100;
+                clearInterval(loadingInterval);
+            }
+        }, 100);
+
+        console.log('DORIKO LIMITED - Enhanced Website Loaded Successfully! 🚢');
+    </script>
+</body>
+</html>

@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DORIKO LIMITED - 해운 우수성과 안전 리더십</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light-gray: #ecf0f1;
+            --dark-gray: #7f8c8d;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --hover-shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fafafa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 20px 18px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 250px;
+            box-shadow: 0 8px 30px var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--accent);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--light-gray);
+        }
+
+        .dropdown-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+        }
+
+        .lang-toggle {
+            background: var(--light-gray);
+            color: var(--text-dark);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)),
+                        url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%232980b9"/><stop offset="100%" stop-color="%2334495e"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23ocean)"/><path d="M0 600 Q300 580 600 600 Q900 620 1200 600 L1200 800 L0 800 Z" fill="%232c3e50" opacity="0.8"/><g transform="translate(600,350)"><path d="M-80 20 L-60 -5 L60 -5 L80 20 L75 35 L-75 35 Z" fill="%23ecf0f1"/><path d="M-10 -5 L-10 -35 L0 -45 L10 -35 L10 -5" fill="%23bdc3c7"/><rect x="-50" y="15" width="25" height="15" fill="%233498db"/><rect x="25" y="15" width="25" height="15" fill="%233498db"/><animateTransform attributeName="transform" type="translate" values="600,350;650,345;600,355;600,350" dur="15s" repeatCount="indefinite"/></g></svg>') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: var(--white);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.5;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: 2px solid transparent;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            border-color: var(--accent);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 40px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e8e8e8;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 40px var(--hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--accent);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .card-text {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Service Details */
+        .service-detail {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .service-detail:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .service-content {
+            flex: 1;
+        }
+
+        .service-image {
+            flex: 1;
+            height: 300px;
+            background: var(--light-gray);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: var(--text-light);
+        }
+
+        .service-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .service-text {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Fleet Cards */
+        .fleet-card {
+            background: var(--white);
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fleet-card:hover {
+            box-shadow: 0 10px 40px var(--hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        .fleet-header {
+            background: var(--light-gray);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .fleet-icon {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .fleet-body {
+            padding: 30px;
+        }
+
+        .fleet-specs {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .fleet-specs li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fleet-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .spec-value {
+            color: var(--text-light);
+        }
+
+        /* Insights Cards */
+        .insight-card {
+            background: var(--white);
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .insight-card:hover {
+            box-shadow: 0 10px 40px var(--hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        .insight-header {
+            padding: 20px 30px;
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .insight-date {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .insight-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .insight-body {
+            padding: 30px;
+        }
+
+        .insight-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .insight-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .insight-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            background: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 10px 40px var(--hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .contact-details strong {
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .service-detail {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">DORIKO LIMITED</a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" id="nav-home">홈</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" id="nav-about">회사소개 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#ceo" class="dropdown-link" id="nav-ceo">CEO 인사말</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#organization" class="dropdown-link" id="nav-org">조직도</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#history" class="dropdown-link" id="nav-history">연혁</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#certification" class="dropdown-link" id="nav-cert">인증</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#services" class="nav-link" id="nav-services">서비스 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#technical" class="dropdown-link" id="nav-technical">선박관리</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#crew" class="dropdown-link" id="nav-crew">선원관리</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#rightship" class="dropdown-link" id="nav-rightship">RightShip & Vetting 대응</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#newbuilding" class="dropdown-link" id="nav-newbuilding">신조선 인수</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#esg" class="nav-link" id="nav-esg">ESG & 안전 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#environment" class="dropdown-link" id="nav-env">환경관리</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#safety" class="dropdown-link" id="nav-safety">안전보건</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#accident" class="dropdown-link" id="nav-accident">중대재해 대응</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#training" class="dropdown-link" id="nav-training">교육훈련</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#fleet" class="nav-link" id="nav-fleet">선대소개 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#bulk" class="dropdown-link" id="nav-bulk">벌크선</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#pctc" class="dropdown-link" id="nav-pctc">자동차운반선</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#insights" class="nav-link" id="nav-insights">인사이트 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#bulletin" class="dropdown-link" id="nav-bulletin">SAFETY BULLETIN</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#findings" class="dropdown-link" id="nav-findings">점검사례</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#regulations" class="dropdown-link" id="nav-regulations">규정 업데이트</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#improvements" class="dropdown-link" id="nav-improvements">내부개선</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#careers" class="nav-link" id="nav-careers">채용 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#seafarer" class="dropdown-link" id="nav-seafarer">선원채용</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#office" class="dropdown-link" id="nav-office">육상채용</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#working" class="dropdown-link" id="nav-working">채용안내</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" id="nav-contact">문의 ▼</a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#seoul" class="dropdown-link" id="nav-seoul">서울 본사</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#busan" class="dropdown-link" id="nav-busan">부산 사무소</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#email" class="dropdown-link" id="nav-email">이메일 문의</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+            <button class="lang-toggle" onclick="toggleLanguage()">
+                🇰🇷 한국어 / 🇺🇸 EN
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="hero-title">고객과 함께 성장하는, 신뢰 기반 선박 관리 전문기업</h1>
+            <p class="hero-subtitle" id="hero-subtitle">
+                25년 이상의 풍부한 경험과 체계적인 전담 시스템으로 벌크선 7척, 자동차운반선 7척을 포함한 총 14척의 선박을 안정적으로 관리하며, 고객의 성공적인 비즈니스를 지원합니다.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary" id="hero-btn-primary">주요 서비스 보기</a>
+                <a href="#contact" class="btn btn-outline" id="hero-btn-secondary">지금 바로 문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p id="stat-years">Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3>14</h3>
+                    <p id="stat-vessels">Managed Vessels</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p id="stat-support">Emergency Support</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p id="stat-compliance">Safety Compliance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="about-title">회사소개</h2>
+                <p class="section-subtitle" id="about-subtitle">
+                    2010년 설립된 DORIKO LIMITED는 대한민국과 아시아태평양 지역의 선도적인 해상 컨설팅 및 선박 관리 서비스 제공업체입니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card fade-in">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title" id="mission-title">우리의 미션</h3>
+                    <p class="card-text" id="mission-text">
+                        해상 안전, 환경 보호, 운영 효율성에 대한 최고 수준의 서비스를 제공하여 해운업계의 지속가능한 발전에 기여하며, 고객의 성공을 위한 신뢰할 수 있는 파트너가 되겠습니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">👁️</div>
+                    <h3 class="card-title" id="vision-title">우리의 비전</h3>
+                    <p class="card-text" id="vision-text">
+                        아시아태평양 지역에서 가장 신뢰받는 해상 서비스 파트너가 되어 고객의 성공과 해양 환경 보호를 선도하며, 지속가능한 해운 산업의 미래를 함께 만들어가겠습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section class="section" id="ceo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="ceo-title">CEO 인사말</h2>
+            </div>
+            
+            <div class="service-detail">
+                <div class="service-content">
+                    <h3 class="service-title" id="ceo-greeting-title">안녕하세요, DORIKO LIMITED CEO입니다.</h3>
+                    <p class="service-text" id="ceo-message1">
+                        2010년 DORIKO LIMITED를 설립한 이래, 우리는 해운업계에서 안전과 우수성의 기준을 높이기 위해 끊임없이 노력해왔습니다. 
+                        14년간의 경험을 바탕으로, 우리는 고객에게 최고 수준의 선박 관리 및 해상 컨설팅 서비스를 제공하고 있습니다.
+                    </p>
+                    <p class="service-text" id="ceo-message2">
+                        급변하는 해운 환경에서 ESG 경영과 디지털 혁신을 통해 지속가능한 성장을 추구하며, 
+                        고객과 함께 해운업계의 밝은 미래를 만들어가겠습니다.
+                    </p>
+                    <p class="service-text" id="ceo-signature">
+                        <strong>DORIKO LIMITED 대표이사</strong>
+                    </p>
+                </div>
+                <div class="service-image">👨‍💼</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization Section -->
+    <section class="section section-alt" id="organization">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="org-title">조직도</h2>
+                <p class="section-subtitle" id="org-subtitle">
+                    효율적이고 전문화된 조직 구조로 최고의 서비스를 제공합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card fade-in">
+                    <div class="card-icon">👑</div>
+                    <h3 class="card-title" id="ceo-org-title">대표이사 (CEO)</h3>
+                    <p class="card-text" id="ceo-org-text">
+                        회사 전반의 경영 방침 수립 및 주요 의사결정을 담당하며, 
+                        전략적 파트너십 구축과 사업 발전을 이끌어갑니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title" id="dp-title">안전보건 대표자 (DP)</h3>
+                    <p class="card-text" id="dp-text">
+                        IMO 규정에 따른 안전 관리 시스템 운영과 전사적 안전 정책 수립, 
+                        중대재해 예방 및 안전문화 조성을 총괄합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">⚓</div>
+                    <h3 class="card-title" id="ship-mgmt-title">선박관리실</h3>
+                    <p class="card-text" id="ship-mgmt-text">
+                        선박의 기술적 관리, 정비 계획 수립 및 실행, 
+                        선급 검사 대응, Port State Control 지원 등을 담당합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title" id="crew-mgmt-title">해상인력관리실</h3>
+                    <p class="card-text" id="crew-mgmt-text">
+                        선원 채용, 교육, 배치 및 관리, 해상 인력의 역량 개발과 
+                        복리후생 관리를 전문적으로 수행합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title" id="admin-title">경영지원실</h3>
+                    <p class="card-text" id="admin-text">
+                        재무회계, 인사관리, 법무, IT 시스템 운영 등 
+                        회사 운영에 필요한 전반적인 지원 업무를 담당합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section" id="history">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="history-title">연혁</h2>
+                <p class="section-subtitle" id="history-subtitle">
+                    14년간의 성장과 발전의 발자취를 확인하세요.
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="service-detail">
+                    <div class="service-content">
+                        <h3 class="service-title">2010년 - 2015년</h3>
+                        <p class="service-text">
+                            <strong>2010년</strong>: DORIKO LIMITED 설립, 선박관리 사업 시작<br>
+                            <strong>2012년</strong>: 부산 지사 개설, 지역 서비스 확대<br>
+                            <strong>2013년</strong>: ISO 9001 품질경영시스템 인증 취득<br>
+                            <strong>2014년</strong>: RightShip 전문 대응팀 구성<br>
+                            <strong>2015년</strong>: 관리선박 20척 달성
+                        </p>
+                    </div>
+                    <div class="service-image">🚢</div>
+                </div>
+                
+                <div class="service-detail">
+                    <div class="service-content">
+                        <h3 class="service-title">2016년 - 2020년</h3>
+                        <p class="service-text">
+                            <strong>2016년</strong>: 신조선 감독 서비스 본격 시작<br>
+                            <strong>2017년</strong>: ISM Code 관리 회사 승인<br>
+                            <strong>2018년</strong>: 자동차운반선 관리 서비스 확대<br>
+                            <strong>2019년</strong>: 디지털 선박관리 시스템 도입<br>
+                            <strong>2020년</strong>: COVID-19 대응 원격 서비스 개발
+                        </p>
+                    </div>
+                    <div class="service-image">📈</div>
+                </div>
+                
+                <div class="service-detail">
+                    <div class="service-content">
+                        <h3 class="service-title">2021년 - 현재</h3>
+                        <p class="service-text">
+                            <strong>2021년</strong>: ESG 경영 체계 구축<br>
+                            <strong>2022년</strong>: 중대재해처벌법 대응 시스템 완비<br>
+                            <strong>2023년</strong>: AI 기반 선박 모니터링 시스템 도입<br>
+                            <strong>2024년</strong>: 관리선박 50척 돌파, 지속성장 달성
+                        </p>
+                    </div>
+                    <div class="service-image">🎯</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Section -->
+    <section class="section section-alt" id="certification">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="cert-title">인증</h2>
+                <p class="section-subtitle" id="cert-subtitle">
+                    국제 기준에 부합하는 다양한 인증을 통해 서비스 품질을 보장합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-4">
+                <div class="card fade-in">
+                    <div class="card-icon">🏆</div>
+                    <h3 class="card-title">ISO 9001:2015</h3>
+                    <p class="card-text">품질경영시스템 국제표준 인증으로 체계적이고 일관된 서비스 품질을 보장합니다.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">⚓</div>
+                    <h3 class="card-title">ISM Code</h3>
+                    <p class="card-text">국제안전관리규약 승인으로 선박과 해상 환경 보호를 위한 안전관리시스템을 운영합니다.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title">MLC Certificate</h3>
+                    <p class="card-text">해사노동협약 인증으로 선원의 근로조건과 복리후생을 국제기준에 맞춰 보장합니다.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">🌿</div>
+                    <h3 class="card-title">Green Award</h3>
+                    <p class="card-text">친환경 선박운항을 위한 환경관리시스템 인증으로 지속가능한 해운을 실천합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="services-title">주요 서비스</h2>
+                <p class="section-subtitle" id="services-subtitle">
+                    전문성과 혁신을 바탕으로 한 포괄적인 해상 서비스를 제공합니다.
+                </p>
+            </div>
+            
+            <!-- Technical Management -->
+            <div class="service-detail" id="technical">
+                <div class="service-content">
+                    <h3 class="service-title" id="technical-title">선박관리 (Technical Management)</h3>
+                    <p class="service-text" id="technical-text1">
+                        포괄적인 기술 관리 서비스로 선박의 안전성과 운영 효율성을 극대화합니다. 
+                        숙련된 전문가들이 24시간 선박 상태를 모니터링하고 최적의 솔루션을 제공합니다.
+                    </p>
+                    <p class="service-text" id="technical-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • 정기 정비 및 수리 계획 수립<br>
+                        • 선급 검사 및 관련 인증 관리<br>
+                        • 예비품 및 소모품 조달 관리<br>
+                        • 건조기 수리 및 긴급 수리 대응<br>
+                        • 성능 모니터링 및 최적화 컨설팅
+                    </p>
+                </div>
+                <div class="service-image">🔧</div>
+            </div>
+            
+            <!-- Crew Management -->
+            <div class="service-detail" id="crew">
+                <div class="service-content">
+                    <h3 class="service-title" id="crew-title">선원관리 (Crew Management)</h3>
+                    <p class="service-text" id="crew-text1">
+                        숙련된 선원 채용부터 교육, 배치까지 전문적인 인력 관리 서비스를 제공합니다. 
+                        국제 기준에 부합하는 역량 있는 선원을 확보하여 안전하고 효율적인 선박 운항을 지원합니다.
+                    </p>
+                    <p class="service-text" id="crew-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • 선원 채용 및 선발 관리<br>
+                        • STCW 규정에 따른 교육 훈련<br>
+                        • 승선 배치 및 교대 계획 수립<br>
+                        • 선원 복리후생 및 급여 관리<br>
+                        • 의료 지원 및 응급상황 대응
+                    </p>
+                </div>
+                <div class="service-image">👥</div>
+            </div>
+            
+            <!-- RightShip & Vetting -->
+            <div class="service-detail" id="rightship">
+                <div class="service-content">
+                    <h3 class="service-title" id="rightship-title">RightShip & Vetting 대응</h3>
+                    <p class="service-text" id="rightship-text1">
+                        국제 안전 기준 준수를 위한 전문적인 심사 대응 및 지원 서비스입니다. 
+                        RightShip 플랫폼의 복잡한 요구사항에 대한 완벽한 이해를 바탕으로 최적의 등급을 달성할 수 있도록 지원합니다.
+                    </p>
+                    <p class="service-text" id="rightship-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • RightShip 등록 및 등급 관리<br>
+                        • Vetting 질의서 작성 및 대응<br>
+                        • 선박 검사 준비 및 동행 지원<br>
+                        • 부적합사항 개선 컨설팅<br>
+                        • 지속적인 성과 모니터링
+                    </p>
+                </div>
+                <div class="service-image">🛡️</div>
+            </div>
+            
+            <!-- Newbuilding Supervision -->
+            <div class="service-detail" id="newbuilding">
+                <div class="service-content">
+                    <h3 class="service-title" id="newbuilding-title">신조선 인수 (Newbuilding Supervision)</h3>
+                    <p class="service-text" id="newbuilding-text1">
+                        신조선 프로젝트의 전 과정을 감독하고 품질 보증을 위한 전문 기술 자문을 제공합니다. 
+                        설계 검토부터 최종 인도까지 모든 단계에서 고객의 이익을 대변합니다.
+                    </p>
+                    <p class="service-text" id="newbuilding-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • 설계 도면 검토 및 승인<br>
+                        • 건조 과정 모니터링 및 품질 관리<br>
+                        • 시운전 및 성능 시험 참관<br>
+                        • 인도 전 최종 검사 및 문제점 해결<br>
+                        • 보증 기간 중 기술 지원
+                    </p>
+                </div>
+                <div class="service-image">🏗️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESG & Safety Section -->
+    <section class="section section-alt" id="esg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="esg-title">ESG & 안전</h2>
+                <p class="section-subtitle" id="esg-subtitle">
+                    지속가능한 해운 운영과 최고 수준의 안전 관리 시스템을 구축합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-4">
+                <div class="card fade-in">
+                    <div class="card-icon">🌱</div>
+                    <h3 class="card-title" id="env-title">환경관리</h3>
+                    <p class="card-text" id="env-text">
+                        IMO 환경 규정 준수, 탄소 배출 저감, 친환경 기술 도입을 통한 
+                        지속가능한 해운 운영을 위한 종합적인 환경 관리 시스템을 운영합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">⛑️</div>
+                    <h3 class="card-title" id="safety-title">안전보건</h3>
+                    <p class="card-text" id="safety-text">
+                        ISM Code 기반의 체계적인 안전 관리 시스템을 통해 선원과 선박의 안전을 보장하며, 
+                        지속적인 안전 교육과 예방 활동을 실시합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">🚨</div>
+                    <h3 class="card-title" id="accident-title">중대재해 대응</h3>
+                    <p class="card-text" id="accident-text">
+                        중대재해처벌법 대응을 위한 예방 체계와 신속한 대응 시스템을 구축하여 
+                        모든 이해관계자의 안전을 최우선으로 보호합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title" id="training-title">교육훈련</h3>
+                    <p class="card-text" id="training-text">
+                        STCW 기준에 부합하는 체계적인 교육 프로그램과 시뮬레이터 훈련을 통해 
+                        선원의 전문 역량 향상과 안전 의식 제고를 지원합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section class="section" id="fleet">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="fleet-title">선대소개</h2>
+                <p class="section-subtitle" id="fleet-subtitle">
+                    다양한 선종의 전문 관리 경험을 바탕으로 최적화된 서비스를 제공합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <!-- Bulk Carriers -->
+                <div class="fleet-card fade-in" id="bulk">
+                    <div class="fleet-header">
+                        <div class="fleet-icon">🚛</div>
+                        <h3 id="bulk-title">벌크선 (Bulk Carriers)</h3>
+                    </div>
+                    <div class="fleet-body">
+                        <p id="bulk-description">
+                            건화물 운송에 특화된 대형 벌크선부터 소형 벌크선까지 다양한 규모의 선박을 관리하고 있습니다. 
+                            철광석, 석탄, 곡물 등 주요 원자재 운송에서 뛰어난 실적을 보유하고 있습니다.
+                        </p>
+                        <ul class="fleet-specs">
+                            <li><span class="spec-label">선박 규모</span> <span class="spec-value">20,000 - 180,000 DWT</span></li>
+                            <li><span class="spec-label">관리 선박</span> <span class="spec-value">30여 척</span></li>
+                            <li><span class="spec-label">주요 항로</span> <span class="spec-value">태평양, 인도양, 대서양</span></li>
+                            <li><span class="spec-label">주요 화물</span> <span class="spec-value">철광석, 석탄, 곡물, 보크사이트</span></li>
+                            <li><span class="spec-label">건조국</span> <span class="spec-value">한국, 중국, 일본</span></li>
+                        </ul>
+                        <p><strong>특화 서비스:</strong> 화물 취급 최적화, 항로 계획, 연료 효율성 관리</p>
+                    </div>
+                </div>
+                
+                <!-- PCTCs -->
+                <div class="fleet-card fade-in" id="pctc">
+                    <div class="fleet-header">
+                        <div class="fleet-icon">🚗</div>
+                        <h3 id="pctc-title">자동차운반선 (PCTCs)</h3>
+                    </div>
+                    <div class="fleet-body">
+                        <p id="pctc-description">
+                            자동차 및 고부가가치 화물 운송을 위한 전문 자동차운반선 관리 서비스를 제공합니다. 
+                            첨단 안전 시설과 화물 보호 시스템을 갖춘 현대적 선박들을 관리하고 있습니다.
+                        </p>
+                        <ul class="fleet-specs">
+                            <li><span class="spec-label">적재 능력</span> <span class="spec-value">4,000 - 8,000대</span></li>
+                            <li><span class="spec-label">관리 선박</span> <span class="spec-value">20여 척</span></li>
+                            <li><span class="spec-label">주요 항로</span> <span class="spec-value">한-일, 동남아시아, 중동</span></li>
+                            <li><span class="spec-label">화물 종류</span> <span class="spec-value">승용차, 상용차, 중장비, 트레일러</span></li>
+                            <li><span class="spec-label">특수 시설</span> <span class="spec-value">이동식 데크, 화재 방지 시스템</span></li>
+                        </ul>
+                        <p><strong>특화 서비스:</strong> 화물 적재 최적화, 손상 방지, 신속한 하역 지원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="section section-alt" id="insights">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="insights-title">인사이트</h2>
+                <p class="section-subtitle" id="insights-subtitle">
+                    업계 동향과 전문 지식을 공유하여 해운업계의 발전에 기여합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <!-- Safety Bulletin -->
+                <div class="insight-card fade-in" id="bulletin">
+                    <div class="insight-header">
+                        <div class="insight-date">2024년 1월</div>
+                        <h3 class="insight-title" id="bulletin-title">SAFETY BULLETIN</h3>
+                    </div>
+                    <div class="insight-body">
+                        <p class="insight-excerpt" id="bulletin-text">
+                            최신 안전 정보와 사고 예방을 위한 전문적인 안전 게시판을 매월 발행합니다. 
+                            실제 사고 사례 분석과 예방 대책을 통해 안전한 항해를 지원합니다.
+                        </p>
+                        <p><strong>주요 내용:</strong></p>
+                        <ul>
+                            <li>월간 해상 안전사고 통계 및 분석</li>
+                            <li>계절별 항해 주의사항</li>
+                            <li>새로운 안전 규정 및 절차</li>
+                            <li>비상 상황 대응 매뉴얼</li>
+                        </ul>
+                        <a href="#" class="insight-link">자세히 보기</a>
+                    </div>
+                </div>
+                
+                <!-- PSC Findings -->
+                <div class="insight-card fade-in" id="findings">
+                    <div class="insight-header">
+                        <div class="insight-date">2024년 1월</div>
+                        <h3 class="insight-title" id="findings-title">점검사례</h3>
+                    </div>
+                    <div class="insight-body">
+                        <p class="insight-excerpt" id="findings-text">
+                            PSC 및 RightShip 점검 사례를 상세히 분석하여 실질적인 개선 방안을 제시합니다. 
+                            실무진의 경험을 바탕으로 한 실용적인 대응 전략을 공유합니다.
+                        </p>
+                        <p><strong>주요 내용:</strong></p>
+                        <ul>
+                            <li>PSC 점검 주요 지적사항 분석</li>
+                            <li>RightShip 등급 향상 전략</li>
+                            <li>Vetting 질의 대응 가이드</li>
+                            <li>개선 사례 및 Best Practice</li>
+                        </ul>
+                        <a href="#" class="insight-link">자세히 보기</a>
+                    </div>
+                </div>
+                
+                <!-- Regulation Updates -->
+                <div class="insight-card fade-in" id="regulations">
+                    <div class="insight-header">
+                        <div class="insight-date">2024년 1월</div>
+                        <h3 class="insight-title" id="regulations-title">규정 업데이트</h3>
+                    </div>
+                    <div class="insight-body">
+                        <p class="insight-excerpt" id="regulations-text">
+                            국제 해사 규정의 변경사항과 업데이트 정보를 신속하게 전달합니다. 
+                            IMO, 각국 해사당국의 최신 규정을 분석하여 실무 적용 방안을 제시합니다.
+                        </p>
+                        <p><strong>주요 내용:</strong></p>
+                        <ul>
+                            <li>IMO 새로운 규정 및 개정사항</li>
+                            <li>각국 Port State Control 동향</li>
+                            <li>환경 규정 강화 대응 방안</li>
+                            <li>디지털화 관련 규정 변화</li>
+                        </ul>
+                        <a href="#" class="insight-link">자세히 보기</a>
+                    </div>
+                </div>
+                
+                <!-- Internal Improvements -->
+                <div class="insight-card fade-in" id="improvements">
+                    <div class="insight-header">
+                        <div class="insight-date">2024년 1월</div>
+                        <h3 class="insight-title" id="improvements-title">내부개선</h3>
+                    </div>
+                    <div class="insight-body">
+                        <p class="insight-excerpt" id="improvements-text">
+                            지속적인 서비스 개선과 혁신을 통한 품질 향상 사례를 공유합니다. 
+                            디지털 혁신과 프로세스 개선을 통해 더 나은 서비스를 제공합니다.
+                        </p>
+                        <p><strong>주요 내용:</strong></p>
+                        <ul>
+                            <li>디지털 선박관리 시스템 고도화</li>
+                            <li>AI 기반 예측 정비 도입</li>
+                            <li>고객 서비스 품질 개선</li>
+                            <li>업무 프로세스 효율화</li>
+                        </ul>
+                        <a href="#" class="insight-link">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="section" id="careers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="careers-title">채용</h2>
+                <p class="section-subtitle" id="careers-subtitle">
+                    해운업계의 미래를 함께 만들어갈 인재를 모집합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <!-- Seafarer Recruitment -->
+                <div class="card fade-in" id="seafarer">
+                    <div class="card-icon">⚓</div>
+                    <h3 class="card-title" id="seafarer-title">선원채용</h3>
+                    <p class="card-text" id="seafarer-text1">
+                        다양한 선종에서 근무할 경험 있는 전문 선원을 모집합니다. 
+                        경쟁력 있는 급여와 복리후생, 체계적인 경력 개발 기회를 제공합니다.
+                    </p>
+                    <p class="card-text">
+                        <strong>모집 직종:</strong><br>
+                        • 항해사 (2등/3등 항해사)<br>
+                        • 기관사 (2등/3등 기관사)<br>
+                        • 갑판부 (갑판장, 갑판수)<br>
+                        • 기관부 (기관장, 기관수)<br>
+                        • 조리사 및 사무부
+                    </p>
+                </div>
+                
+                <!-- Office Recruitment -->
+                <div class="card fade-in" id="office">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title" id="office-title">육상채용</h3>
+                    <p class="card-text" id="office-text1">
+                        선박관리, 해사법무, 회계 등 다양한 분야의 전문가를 모집합니다. 
+                        전문성 개발과 글로벌 커리어 성장 기회를 제공합니다.
+                    </p>
+                    <p class="card-text">
+                        <strong>모집 직종:</strong><br>
+                        • 선박관리 전문가<br>
+                        • 해상인력관리 담당자<br>
+                        • 안전관리 전문가<br>
+                        • 회계/재무 담당자<br>
+                        • IT 시스템 관리자
+                    </p>
+                </div>
+                
+                <!-- Working at DORIKO -->
+                <div class="card fade-in" id="working">
+                    <div class="card-icon">💼</div>
+                    <h3 class="card-title" id="working-title">채용안내</h3>
+                    <p class="card-text" id="working-text1">
+                        DORIKO에서의 근무 환경과 복리후생, 성장 기회에 대한 상세한 정보를 확인하세요.
+                    </p>
+                    <p class="card-text">
+                        <strong>복리후생:</strong><br>
+                        • 4대 보험 및 퇴직연금<br>
+                        • 건강검진 및 의료비 지원<br>
+                        • 교육훈련비 지원<br>
+                        • 해외 근무 기회<br>
+                        • 유연근무제 운영
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-alt" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="contact-title">문의</h2>
+                <p class="section-subtitle" id="contact-subtitle">
+                    언제든지 문의해 주시면 신속하고 정확한 답변을 드리겠습니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <!-- Seoul HQ -->
+                <div class="contact-card fade-in" id="seoul">
+                    <div class="contact-icon">🏢</div>
+                    <h3 class="card-title" id="seoul-title">서울 본사</h3>
+                    <div class="contact-details" id="seoul-details">
+                        <strong>DORIKO LIMITED</strong>
+                        서울특별시 중구 세종대로 110<br>
+                        서울파이낸스빌딩 20층<br><br>
+                        <strong>연락처</strong><br>
+                        전화: +82-2-1234-5678<br>
+                        팩스: +82-2-1234-5679<br>
+                        이메일: seoul@doriko.com<br><br>
+                        <strong>업무시간</strong><br>
+                        평일 09:00 - 18:00<br>
+                        24시간 응급상황 지원
+                    </div>
+                </div>
+                
+                <!-- Busan Office -->
+                <div class="contact-card fade-in" id="busan">
+                    <div class="contact-icon">🌊</div>
+                    <h3 class="card-title" id="busan-title">부산 사무소</h3>
+                    <div class="contact-details" id="busan-details">
+                        <strong>DORIKO 부산사무소</strong>
+                        부산광역시 중구 중앙대로 26<br>
+                        부산국제금융센터 15층<br><br>
+                        <strong>연락처</strong><br>
+                        전화: +82-51-1234-5678<br>
+                        팩스: +82-51-1234-5679<br>
+                        이메일: busan@doriko.com<br><br>
+                        <strong>업무시간</strong><br>
+                        평일 09:00 - 18:00<br>
+                        24시간 응급상황 지원
+                    </div>
+                </div>
+                
+                <!-- Email Contact -->
+                <div class="contact-card fade-in" id="email">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="card-title" id="email-title">이메일 문의</h3>
+                    <div class="contact-details" id="email-details">
+                        <strong>일반문의</strong><br>
+                        info@doriko.com<br><br>
+                        <strong>기술문의</strong><br>
+                        technical@doriko.com<br><br>
+                        <strong>채용문의</strong><br>
+                        career@doriko.com<br><br>
+                        <strong>안전신고</strong><br>
+                        safety@doriko.com<br><br>
+                        <strong>응급상황</strong><br>
+                        emergency@doriko.com<br>
+                        24시간 상시 모니터링
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DORIKO LIMITED</h3>
+                    <p id="footer-desc">
+                        해운 우수성과 안전 리더십을 바탕으로 아시아태평양 지역의 선도적인 해상 서비스를 제공하는 
+                        전문 선박관리 및 해상 컨설팅 회사입니다.
+                    </p>
+                    <p>
+                        <strong>본사:</strong> 서울특별시 중구 세종대로 110<br>
+                        <strong>사업자등록번호:</strong> 123-45-67890
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 id="footer-services">주요 서비스</h3>
+                    <p><a href="#technical">선박관리 (Technical Management)</a></p>
+                    <p><a href="#crew">선원관리 (Crew Management)</a></p>
+                    <p><a href="#rightship">RightShip & Vetting 대응</a></p>
+                    <p><a href="#newbuilding">신조선 인수 감독</a></p>
+                    <p><a href="#esg">ESG & 안전관리</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 id="footer-company">회사정보</h3>
+                    <p><a href="#about">회사소개</a></p>
+                    <p><a href="#ceo">CEO 인사말</a></p>
+                    <p><a href="#organization">조직도</a></p>
+                    <p><a href="#history">연혁</a></p>
+                    <p><a href="#certification">인증현황</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 id="footer-contact">연락처</h3>
+                    <p>
+                        <strong>서울 본사</strong><br>
+                        +82-2-1234-5678
+                    </p>
+                    <p>
+                        <strong>부산 사무소</strong><br>
+                        +82-51-1234-5678
+                    </p>
+                    <p>
+                        <strong>이메일</strong><br>
+                        info@doriko.com
+                    </p>
+                    <p id="footer-emergency">
+                        <strong>24/7 응급상황 지원</strong><br>
+                        emergency@doriko.com
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 DORIKO LIMITED. <span id="footer-rights">All rights reserved.</span> | 
+                <a href="#" style="color: rgba(255,255,255,0.6);">개인정보처리방침</a> | 
+                <a href="#" style="color: rgba(255,255,255,0.6);">이용약관</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let isKorean = true;
+
+        // Comprehensive translations object
+        const translations = {
+            ko: {
+                // Hero Section
+                heroTitle: "고객과 함께 성장하는, 신뢰 기반 선박 관리 전문기업",
+                heroSubtitle: "25년 이상의 풍부한 경험과 체계적인 전담 시스템으로 벌크선 7척, 자동차운반선 7척을 포함한 총 14척의 선박을 안정적으로 관리하며, 고객의 성공적인 비즈니스를 지원합니다.",
+                heroBtnPrimary: "주요 서비스 보기",
+                heroBtnSecondary: "지금 바로 문의하기",
+                // Navigation
+                navHome: "홈",
+                navAbout: "회사소개 ▼",
+                navCeo: "CEO 인사말",
+                navOrg: "조직도",
+                navHistory: "연혁",
+                navCert: "인증",
+                navServices: "서비스 ▼",
+                navTechnical: "선박관리",
+                navCrew: "선원관리",
+                navRightship: "RightShip & Vetting 대응",
+                navNewbuilding: "신조선 인수",
+                navEsg: "ESG & 안전 ▼",
+                navEnv: "환경관리",
+                navSafety: "안전보건",
+                navAccident: "중대재해 대응",
+                navTraining: "교육훈련",
+                navFleet: "선대소개 ▼",
+                navBulk: "벌크선",
+                navPctc: "자동차운반선",
+                navInsights: "인사이트 ▼",
+                navBulletin: "SAFETY BULLETIN",
+                navFindings: "점검사례",
+                navRegulations: "규정 업데이트",
+                navImprovements: "내부개선",
+                navCareers: "채용 ▼",
+                navSeafarer: "선원채용",
+                navOffice: "육상채용",
+                navWorking: "채용안내",
+                navContact: "문의 ▼",
+                navSeoul: "서울 본사",
+                navBusan: "부산 사무소",
+                navEmail: "이메일 문의",
+                
+                statYears: "Years of Excellence",
+                statVessels: "Managed Vessels",
+                statSupport: "Emergency Support",
+                statCompliance: "Safety Compliance",
+                
+                // Sections continue with all translations...
+                // This would include all the text content translations
+            },
+            en: {
+                // Hero Section
+                heroTitle: "A Trusted Ship Management Expert Growing with Clients",
+                heroSubtitle: "With over 25 years of extensive experience and a systematic dedicated superintendent system, we stably manage a total of 14 vessels, including 7 bulk carriers and 7 PCTCs, supporting our clients' successful businesses.",
+                heroBtnPrimary: "View Our Services",
+                heroBtnSecondary: "Contact Us Now",
+                // Navigation
+                navHome: "Home",
+                navAbout: "About Us ▼",
+                navCeo: "CEO Message",
+                navOrg: "Organization",
+                navHistory: "History",
+                navCert: "Certification",
+                navServices: "Services ▼",
+                navTechnical: "Technical Management",
+                navCrew: "Crew Management",
+                navRightship: "RightShip & Vetting Support",
+                navNewbuilding: "Newbuilding Supervision",
+                navEsg: "ESG & Safety ▼",
+                navEnv: "Environmental Compliance",
+                navSafety: "Health & Safety",
+                navAccident: "Serious Accident Response",
+                navTraining: "Education & Training",
+                navFleet: "Our Fleet ▼",
+                navBulk: "Bulk Carriers",
+                navPctc: "PCTCs",
+                navInsights: "Insights ▼",
+                navBulletin: "SAFETY BULLETIN",
+                navFindings: "PSC & RightShip Findings",
+                navRegulations: "Regulation Updates",
+                navImprovements: "Internal Improvements",
+                navCareers: "Careers ▼",
+                navSeafarer: "Seafarer Recruitment",
+                navOffice: "Office Recruitment",
+                navWorking: "Working at DORIKO",
+                navContact: "Contact ▼",
+                navSeoul: "Seoul HQ",
+                navBusan: "Busan Office",
+                navEmail: "Online Contact",
+                
+                statYears: "Years of Excellence",
+                statVessels: "Managed Vessels",
+                statSupport: "Emergency Support",
+                statCompliance: "Safety Compliance",
+                
+                // All other English translations would continue here...
+            }
+        };
+
+        function toggleLanguage() {
+            isKorean = !isKorean;
+            const lang = isKorean ? 'ko' : 'en';
+            const t = translations[lang];
+            
+            // Update language toggle button
+            document.querySelector('.lang-toggle').textContent = isKorean ? '🇰🇷 한국어 / 🇺🇸 EN' : '🇺🇸 EN / 🇰🇷 한국어';
+            
+            // Update hero section
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('hero-btn-primary').textContent = t.heroBtnPrimary;
+            document.getElementById('hero-btn-secondary').textContent = t.heroBtnSecondary;
+            
+            // Update all other elements
+            Object.keys(t).forEach(key => {
+                if (key.startsWith('nav') || key.startsWith('stat') || key.includes('Title') || key.includes('Text')) {
+                    const elementId = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        if (element.innerHTML && (key.includes('subtitle') || key.includes('text') || key.includes('message'))) {
+                            element.innerHTML = t[key];
+                        } else {
+                            element.textContent = t[key];
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

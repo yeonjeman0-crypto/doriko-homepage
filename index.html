@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DORIKO LIMITED - 해운 우수성과 안전 리더십</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #005F99;
+            text-decoration: none;
+        }
+
+        .logo i {
+            background: linear-gradient(135deg, #005F99, #00B4D8);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #1a202c;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #005F99;
+            background: rgba(0, 95, 153, 0.1);
+        }
+
+        .lang-btn {
+            background: #005F99;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: #0077B6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0891b2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #005F99, #00B4D8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: #f8fafc;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #005F99, #00B4D8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .service-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-ship"></i>
+                DORIKO LIMITED
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">홈</a></li>
+                <li><a href="#about" class="nav-link">회사소개</a></li>
+                <li><a href="#services" class="nav-link">서비스</a></li>
+                <li><a href="#fleet" class="nav-link">선단</a></li>
+                <li><a href="#contact" class="nav-link">연락처</a></li>
+                <li><button class="lang-btn" onclick="toggleLanguage()">한국어</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>DORIKO LIMITED</h1>
+            <p class="subtitle">해운 우수성과 안전 리더십</p>
+            <p class="description">30년 경험으로 안전하고 효율적인 해상 운송 서비스를 제공하는 글로벌 해운 선도 기업</p>
+            
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">
+                    <i class="fas fa-ship"></i>
+                    서비스 알아보기
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone-alt"></i>
+                    문의하기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">년 경험</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">보유 선박</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">운항 항로</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">안전 기록</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2 class="section-title">전문 해운 서비스</h2>
+                <p class="section-subtitle">다양한 화물과 운송 요구사항에 맞춘 맞춤형 솔루션을 제공합니다</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3 class="service-title">해상 운송</h3>
+                    <p class="service-description">안전하고 효율적인 컨테이너 및 벌크화물 운송 서비스</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="service-title">물류 관리</h3>
+                    <p class="service-description">통합 물류 솔루션으로 공급망 최적화</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="service-title">무역 서비스</h3>
+                    <p class="service-description">글로벌 무역을 위한 전문 컨설팅 및 중개 서비스</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="service-title">기술 관리</h3>
+                    <p class="service-description">선박 유지보수 및 기술 지원 서비스</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 DORIKO LIMITED. 모든 권리 보유.</p>
+    </footer>
+
+    <script>
+        let isKorean = true;
+        
+        function toggleLanguage() {
+            isKorean = !isKorean;
+            
+            const langBtn = document.querySelector('.lang-btn');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const heroTitle = document.querySelector('.hero-content h1');
+            const heroSubtitle = document.querySelector('.subtitle');
+            const heroDescription = document.querySelector('.description');
+            const heroBtn1 = document.querySelector('.btn-primary');
+            const heroBtn2 = document.querySelector('.btn-secondary');
+            const statLabels = document.querySelectorAll('.stat-label');
+            const sectionTitle = document.querySelector('.section-title');
+            const sectionSubtitle = document.querySelector('.section-subtitle');
+            const serviceTitles = document.querySelectorAll('.service-title');
+            const serviceDescs = document.querySelectorAll('.service-description');
+            
+            if (isKorean) {
+                langBtn.textContent = '한국어';
+                navLinks[0].textContent = '홈';
+                navLinks[1].textContent = '회사소개';
+                navLinks[2].textContent = '서비스';
+                navLinks[3].textContent = '선단';
+                navLinks[4].textContent = '연락처';
+                
+                heroTitle.textContent = 'DORIKO LIMITED';
+                heroSubtitle.textContent = '해운 우수성과 안전 리더십';
+                heroDescription.textContent = '30년 경험으로 안전하고 효율적인 해상 운송 서비스를 제공하는 글로벌 해운 선도 기업';
+                heroBtn1.innerHTML = '<i class="fas fa-ship"></i> 서비스 알아보기';
+                heroBtn2.innerHTML = '<i class="fas fa-phone-alt"></i> 문의하기';
+                
+                statLabels[0].textContent = '년 경험';
+                statLabels[1].textContent = '보유 선박';
+                statLabels[2].textContent = '운항 항로';
+                statLabels[3].textContent = '안전 기록';
+                
+                sectionTitle.textContent = '전문 해운 서비스';
+                sectionSubtitle.textContent = '다양한 화물과 운송 요구사항에 맞춘 맞춤형 솔루션을 제공합니다';
+                
+                serviceTitles[0].textContent = '해상 운송';
+                serviceTitles[1].textContent = '물류 관리';
+                serviceTitles[2].textContent = '무역 서비스';
+                serviceTitles[3].textContent = '기술 관리';
+                
+                serviceDescs[0].textContent = '안전하고 효율적인 컨테이너 및 벌크화물 운송 서비스';
+                serviceDescs[1].textContent = '통합 물류 솔루션으로 공급망 최적화';
+                serviceDescs[2].textContent = '글로벌 무역을 위한 전문 컨설팅 및 중개 서비스';
+                serviceDescs[3].textContent = '선박 유지보수 및 기술 지원 서비스';
+                
+            } else {
+                langBtn.textContent = 'English';
+                navLinks[0].textContent = 'Home';
+                navLinks[1].textContent = 'About Us';
+                navLinks[2].textContent = 'Services';
+                navLinks[3].textContent = 'Fleet';
+                navLinks[4].textContent = 'Contact';
+                
+                heroTitle.textContent = 'DORIKO LIMITED';
+                heroSubtitle.textContent = 'Maritime Excellence and Safety Leadership';
+                heroDescription.textContent = 'A global shipping leader providing safe and efficient maritime transport services with 30 years of experience';
+                heroBtn1.innerHTML = '<i class="fas fa-ship"></i> Explore Services';
+                heroBtn2.innerHTML = '<i class="fas fa-phone-alt"></i> Contact Us';
+                
+                statLabels[0].textContent = 'Years Experience';
+                statLabels[1].textContent = 'Vessels in Fleet';
+                statLabels[2].textContent = 'Shipping Routes';
+                statLabels[3].textContent = 'Safety Record';
+                
+                sectionTitle.textContent = 'Professional Shipping Services';
+                sectionSubtitle.textContent = 'We provide customized solutions for various cargo and transportation requirements';
+                
+                serviceTitles[0].textContent = 'Maritime Transport';
+                serviceTitles[1].textContent = 'Logistics Management';
+                serviceTitles[2].textContent = 'Trading Services';
+                serviceTitles[3].textContent = 'Technical Management';
+                
+                serviceDescs[0].textContent = 'Safe and efficient container and bulk cargo shipping services';
+                serviceDescs[1].textContent = 'Supply chain optimization with integrated logistics solutions';
+                serviceDescs[2].textContent = 'Professional consulting and brokerage services for global trade';
+                serviceDescs[3].textContent = 'Vessel maintenance and technical support services';
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

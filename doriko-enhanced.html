@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page-title">DORIKO LIMITED - 해운 우수성과 안전 리더십</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #005F99;
+            --secondary: #0077B6;
+            --accent: #00B4D8;
+            --light: #F6F9FC;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --shadow: rgba(0, 95, 153, 0.1);
+            --hover-shadow: rgba(0, 95, 153, 0.15);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #fafbfc;
+            overflow-x: hidden;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--light);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: var(--white);
+            box-shadow: 0 4px 30px var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 1.2rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link i {
+            margin-left: 0.25rem;
+            font-size: 0.7rem;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover .nav-link i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 280px;
+            box-shadow: 0 10px 40px var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            border-radius: 12px;
+            border-top: 3px solid var(--accent);
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            transition: var(--transition);
+        }
+
+        .dropdown-item:hover {
+            background: var(--light);
+        }
+
+        .dropdown-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 1rem 1.5rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover .dropdown-link {
+            color: var(--accent);
+            border-left-color: var(--accent);
+        }
+
+        .lang-toggle {
+            background: var(--light);
+            color: var(--dark);
+            padding: 0.75rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-toggle:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient),
+                        url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23005F99"/><stop offset="100%" stop-color="%230077B6"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23ocean)"/><path d="M0 600 Q300 580 600 600 Q900 620 1200 600 L1200 800 L0 800 Z" fill="%2300B4D8" opacity="0.3"/><g transform="translate(600,350)"><path d="M-80 20 L-60 -5 L60 -5 L80 20 L75 35 L-75 35 Z" fill="%23F6F9FC"/><path d="M-10 -5 L-10 -35 L0 -45 L10 -35 L10 -5" fill="%236c757d"/><rect x="-50" y="15" width="25" height="15" fill="%2300B4D8"/><rect x="25" y="15" width="25" height="15" fill="%2300B4D8"/><animateTransform attributeName="transform" type="translate" values="600,350;650,345;600,355;600,350" dur="15s" repeatCount="indefinite"/></g></svg>') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0.8;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 180, 216, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll i {
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -3s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--primary);
+            color: var(--white);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="white" stop-opacity="0.1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--white), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-alt {
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 95, 153, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--hover-shadow);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            display: block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .card-text {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Service Details */
+        .service-detail {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            padding: 3rem;
+            background: var(--white);
+            border-radius: 25px;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-detail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px var(--hover-shadow);
+        }
+
+        .service-detail:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .service-content {
+            flex: 1;
+        }
+
+        .service-image {
+            flex: 1;
+            height: 350px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .service-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .service-text {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Fleet Cards */
+        .fleet-card {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 95, 153, 0.1);
+            position: relative;
+        }
+
+        .fleet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .fleet-card:hover::before {
+            opacity: 0.03;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 80px var(--hover-shadow);
+        }
+
+        .fleet-header {
+            background: var(--gradient);
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .fleet-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .fleet-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .fleet-body {
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .fleet-specs {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .fleet-specs li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .fleet-specs li:hover {
+            background: var(--light);
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 10px;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .fleet-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .spec-value {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 95, 153, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 80px var(--hover-shadow);
+        }
+
+        .contact-icon {
+            font-size: 4rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-details {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .contact-details strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="white" stop-opacity="0.1"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            line-height: 1.8;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+            
+            .service-detail {
+                gap: 2rem;
+                padding: 2rem;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+                box-shadow: 0 10px 40px var(--shadow);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 1rem;
+                border-bottom: 1px solid var(--light);
+            }
+
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: var(--light);
+                border-radius: 0;
+                border: none;
+                margin-top: 0.5rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .service-detail {
+                flex-direction: column !important;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .service-image {
+                height: 250px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+            .contact-card,
+            .fleet-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 180, 216, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-anchor"></i>
+                DORIKO LIMITED
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-i18n="nav-home">홈</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-i18n="nav-about">회사소개 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#ceo" class="dropdown-link" data-i18n="nav-ceo">CEO 인사말</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#organization" class="dropdown-link" data-i18n="nav-org">조직도</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#history" class="dropdown-link" data-i18n="nav-history">연혁</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#certification" class="dropdown-link" data-i18n="nav-cert">인증</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#services" class="nav-link" data-i18n="nav-services">서비스 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#technical" class="dropdown-link" data-i18n="nav-technical">선박관리</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#crew" class="dropdown-link" data-i18n="nav-crew">선원관리</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#rightship" class="dropdown-link" data-i18n="nav-rightship">RightShip & Vetting 대응</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#newbuilding" class="dropdown-link" data-i18n="nav-newbuilding">신조선 인수</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#esg" class="nav-link" data-i18n="nav-esg">ESG & 안전 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#environment" class="dropdown-link" data-i18n="nav-env">환경관리</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#safety" class="dropdown-link" data-i18n="nav-safety">안전보건</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#accident" class="dropdown-link" data-i18n="nav-accident">중대재해 대응</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#training" class="dropdown-link" data-i18n="nav-training">교육훈련</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#fleet" class="nav-link" data-i18n="nav-fleet">선대소개 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#bulk" class="dropdown-link" data-i18n="nav-bulk">벌크선</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#pctc" class="dropdown-link" data-i18n="nav-pctc">자동차운반선</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#insights" class="nav-link" data-i18n="nav-insights">인사이트 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#bulletin" class="dropdown-link" data-i18n="nav-bulletin">SAFETY BULLETIN</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#findings" class="dropdown-link" data-i18n="nav-findings">점검사례</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#regulations" class="dropdown-link" data-i18n="nav-regulations">규정 업데이트</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#improvements" class="dropdown-link" data-i18n="nav-improvements">내부개선</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#careers" class="nav-link" data-i18n="nav-careers">채용 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#seafarer" class="dropdown-link" data-i18n="nav-seafarer">선원채용</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#office" class="dropdown-link" data-i18n="nav-office">육상채용</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#working" class="dropdown-link" data-i18n="nav-working">채용안내</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-i18n="nav-contact">문의 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <div class="dropdown-item">
+                            <a href="#seoul" class="dropdown-link" data-i18n="nav-seoul">서울 본사</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#busan" class="dropdown-link" data-i18n="nav-busan">부산 사무소</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#email" class="dropdown-link" data-i18n="nav-email">이메일 문의</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+            <button class="lang-toggle" onclick="toggleLanguage()">
+                <i class="fas fa-globe"></i>
+                <span data-i18n="lang-btn">한국어 / EN</span>
+            </button>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 data-i18n="hero-title">고객과 함께 성장하는, 신뢰 기반 선박 관리 전문기업</h1>
+            <p class="hero-subtitle" data-i18n="hero-subtitle">
+                25년 이상의 풍부한 경험과 체계적인 전담 시스템으로 벌크선 7척, 자동차운반선 7척을 포함한 총 14척의 선박을 안정적으로 관리하며, 고객의 성공적인 비즈니스를 지원합니다.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary" data-i18n="hero-btn-primary">
+                    <i class="fas fa-ship"></i>
+                    주요 서비스 보기
+                </a>
+                <a href="#contact" class="btn btn-outline" data-i18n="hero-btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    지금 바로 문의하기
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <span data-i18n="scroll-down">아래로 스크롤</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <h3>25+</h3>
+                    <p data-i18n="stat-years">년의 우수성</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>14</h3>
+                    <p data-i18n="stat-vessels">관리 선박</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>24/7</h3>
+                    <p data-i18n="stat-support">응급상황 지원</p>
+                </div>
+                <div class="stat-item fade-in">
+                    <h3>100%</h3>
+                    <p data-i18n="stat-compliance">안전 준수</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-i18n="about-title">회사소개</h2>
+                <p class="section-subtitle" data-i18n="about-subtitle">
+                    2010년 설립된 DORIKO LIMITED는 대한민국과 아시아태평양 지역의 선도적인 해상 컨설팅 및 선박 관리 서비스 제공업체입니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card slide-in-left">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="card-title" data-i18n="mission-title">우리의 미션</h3>
+                    <p class="card-text" data-i18n="mission-text">
+                        해상 안전, 환경 보호, 운영 효율성에 대한 최고 수준의 서비스를 제공하여 해운업계의 지속가능한 발전에 기여하며, 고객의 성공을 위한 신뢰할 수 있는 파트너가 되겠습니다.
+                    </p>
+                </div>
+                
+                <div class="card slide-in-right">
+                    <div class="card-icon"><i class="fas fa-eye"></i></div>
+                    <h3 class="card-title" data-i18n="vision-title">우리의 비전</h3>
+                    <p class="card-text" data-i18n="vision-text">
+                        아시아태평양 지역에서 가장 신뢰받는 해상 서비스 파트너가 되어 고객의 성공과 해양 환경 보호를 선도하며, 지속가능한 해운 산업의 미래를 함께 만들어가겠습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section class="section" id="ceo">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-i18n="ceo-title">CEO 인사말</h2>
+            </div>
+            
+            <div class="service-detail fade-in">
+                <div class="service-content">
+                    <h3 class="service-title" data-i18n="ceo-greeting-title">안녕하세요, DORIKO LIMITED CEO입니다.</h3>
+                    <p class="service-text" data-i18n="ceo-message1">
+                        2010년 DORIKO LIMITED를 설립한 이래, 우리는 해운업계에서 안전과 우수성의 기준을 높이기 위해 끊임없이 노력해왔습니다. 
+                        14년간의 경험을 바탕으로, 우리는 고객에게 최고 수준의 선박 관리 및 해상 컨설팅 서비스를 제공하고 있습니다.
+                    </p>
+                    <p class="service-text" data-i18n="ceo-message2">
+                        급변하는 해운 환경에서 ESG 경영과 디지털 혁신을 통해 지속가능한 성장을 추구하며, 
+                        고객과 함께 해운업계의 밝은 미래를 만들어가겠습니다.
+                    </p>
+                    <p class="service-text" data-i18n="ceo-signature">
+                        <strong>DORIKO LIMITED 대표이사</strong>
+                    </p>
+                </div>
+                <div class="service-image"><i class="fas fa-user-tie"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section-alt" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-i18n="services-title">주요 서비스</h2>
+                <p class="section-subtitle" data-i18n="services-subtitle">
+                    전문성과 혁신을 바탕으로 한 포괄적인 해상 서비스를 제공합니다.
+                </p>
+            </div>
+            
+            <!-- Technical Management -->
+            <div class="service-detail fade-in" id="technical">
+                <div class="service-content">
+                    <h3 class="service-title" data-i18n="technical-title">선박관리 (Technical Management)</h3>
+                    <p class="service-text" data-i18n="technical-text1">
+                        포괄적인 기술 관리 서비스로 선박의 안전성과 운영 효율성을 극대화합니다. 
+                        숙련된 전문가들이 24시간 선박 상태를 모니터링하고 최적의 솔루션을 제공합니다.
+                    </p>
+                    <p class="service-text" data-i18n="technical-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • 정기 정비 및 수리 계획 수립<br>
+                        • 선급 검사 및 관련 인증 관리<br>
+                        • 예비품 및 소모품 조달 관리<br>
+                        • 건조기 수리 및 긴급 수리 대응<br>
+                        • 성능 모니터링 및 최적화 컨설팅
+                    </p>
+                </div>
+                <div class="service-image"><i class="fas fa-tools"></i></div>
+            </div>
+            
+            <!-- Crew Management -->
+            <div class="service-detail fade-in" id="crew">
+                <div class="service-content">
+                    <h3 class="service-title" data-i18n="crew-title">선원관리 (Crew Management)</h3>
+                    <p class="service-text" data-i18n="crew-text1">
+                        숙련된 선원 채용부터 교육, 배치까지 전문적인 인력 관리 서비스를 제공합니다. 
+                        국제 기준에 부합하는 역량 있는 선원을 확보하여 안전하고 효율적인 선박 운항을 지원합니다.
+                    </p>
+                    <p class="service-text" data-i18n="crew-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • 선원 채용 및 선발 관리<br>
+                        • STCW 규정에 따른 교육 훈련<br>
+                        • 승선 배치 및 교대 계획 수립<br>
+                        • 선원 복리후생 및 급여 관리<br>
+                        • 의료 지원 및 응급상황 대응
+                    </p>
+                </div>
+                <div class="service-image"><i class="fas fa-users"></i></div>
+            </div>
+
+            <!-- RightShip & Vetting -->
+            <div class="service-detail fade-in" id="rightship">
+                <div class="service-content">
+                    <h3 class="service-title" data-i18n="rightship-title">RightShip & Vetting 대응</h3>
+                    <p class="service-text" data-i18n="rightship-text1">
+                        국제 안전 기준 준수를 위한 전문적인 심사 대응 및 지원 서비스입니다. 
+                        RightShip 플랫폼의 복잡한 요구사항에 대한 완벽한 이해를 바탕으로 최적의 등급을 달성할 수 있도록 지원합니다.
+                    </p>
+                    <p class="service-text" data-i18n="rightship-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • RightShip 등록 및 등급 관리<br>
+                        • Vetting 질의서 작성 및 대응<br>
+                        • 선박 검사 준비 및 동행 지원<br>
+                        • 부적합사항 개선 컨설팅<br>
+                        • 지속적인 성과 모니터링
+                    </p>
+                </div>
+                <div class="service-image"><i class="fas fa-shield-alt"></i></div>
+            </div>
+
+            <!-- Newbuilding Supervision -->
+            <div class="service-detail fade-in" id="newbuilding">
+                <div class="service-content">
+                    <h3 class="service-title" data-i18n="newbuilding-title">신조선 인수 (Newbuilding Supervision)</h3>
+                    <p class="service-text" data-i18n="newbuilding-text1">
+                        신조선 프로젝트의 전 과정을 감독하고 품질 보증을 위한 전문 기술 자문을 제공합니다. 
+                        설계 검토부터 최종 인도까지 모든 단계에서 고객의 이익을 대변합니다.
+                    </p>
+                    <p class="service-text" data-i18n="newbuilding-text2">
+                        <strong>주요 서비스:</strong><br>
+                        • 설계 도면 검토 및 승인<br>
+                        • 건조 과정 모니터링 및 품질 관리<br>
+                        • 시운전 및 성능 시험 참관<br>
+                        • 인도 전 최종 검사 및 문제점 해결<br>
+                        • 보증 기간 중 기술 지원
+                    </p>
+                </div>
+                <div class="service-image"><i class="fas fa-hammer"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESG & Safety Section -->
+    <section class="section" id="esg">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-i18n="esg-title">ESG & 안전</h2>
+                <p class="section-subtitle" data-i18n="esg-subtitle">
+                    지속가능한 해운 운영과 최고 수준의 안전 관리 시스템을 구축합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-4">
+                <div class="card fade-in">
+                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                    <h3 class="card-title" data-i18n="env-title">환경관리</h3>
+                    <p class="card-text" data-i18n="env-text">
+                        IMO 환경 규정 준수, 탄소 배출 저감, 친환경 기술 도입을 통한 
+                        지속가능한 해운 운영을 위한 종합적인 환경 관리 시스템을 운영합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3 class="card-title" data-i18n="safety-title">안전보건</h3>
+                    <p class="card-text" data-i18n="safety-text">
+                        ISM Code 기반의 체계적인 안전 관리 시스템을 통해 선원과 선박의 안전을 보장하며, 
+                        지속적인 안전 교육과 예방 활동을 실시합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3 class="card-title" data-i18n="accident-title">중대재해 대응</h3>
+                    <p class="card-text" data-i18n="accident-text">
+                        중대재해처벌법 대응을 위한 예방 체계와 신속한 대응 시스템을 구축하여 
+                        모든 이해관계자의 안전을 최우선으로 보호합니다.
+                    </p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="card-title" data-i18n="training-title">교육훈련</h3>
+                    <p class="card-text" data-i18n="training-text">
+                        STCW 기준에 부합하는 체계적인 교육 프로그램과 시뮬레이터 훈련을 통해 
+                        선원의 전문 역량 향상과 안전 의식 제고를 지원합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section class="section section-alt" id="fleet">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-i18n="fleet-title">선대소개</h2>
+                <p class="section-subtitle" data-i18n="fleet-subtitle">
+                    벌크선과 자동차운반선 전문 관리 경험을 바탕으로 최적화된 서비스를 제공합니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-2">
+                <!-- Bulk Carriers -->
+                <div class="fleet-card fade-in" id="bulk">
+                    <div class="fleet-header">
+                        <div class="fleet-icon"><i class="fas fa-ship"></i></div>
+                        <h3 data-i18n="bulk-title">벌크선 (Bulk Carriers)</h3>
+                    </div>
+                    <div class="fleet-body">
+                        <p data-i18n="bulk-description">
+                            건화물 운송에 특화된 대형 벌크선부터 소형 벌크선까지 다양한 규모의 선박을 관리하고 있습니다. 
+                            철광석, 석탄, 곡물 등 주요 원자재 운송에서 뛰어난 실적을 보유하고 있습니다.
+                        </p>
+                        <ul class="fleet-specs">
+                            <li><span class="spec-label">관리 선박</span> <span class="spec-value">7척</span></li>
+                            <li><span class="spec-label">선박 규모</span> <span class="spec-value">20,000 - 180,000 DWT</span></li>
+                            <li><span class="spec-label">주요 항로</span> <span class="spec-value">태평양, 인도양, 대서양</span></li>
+                            <li><span class="spec-label">주요 화물</span> <span class="spec-value">철광석, 석탄, 곡물</span></li>
+                        </ul>
+                        <p><strong>특화 서비스:</strong> 화물 취급 최적화, 항로 계획, 연료 효율성 관리</p>
+                    </div>
+                </div>
+                
+                <!-- PCTCs -->
+                <div class="fleet-card fade-in" id="pctc">
+                    <div class="fleet-header">
+                        <div class="fleet-icon"><i class="fas fa-car"></i></div>
+                        <h3 data-i18n="pctc-title">자동차운반선 (PCTCs)</h3>
+                    </div>
+                    <div class="fleet-body">
+                        <p data-i18n="pctc-description">
+                            자동차 및 고부가가치 화물 운송을 위한 전문 자동차운반선 관리 서비스를 제공합니다. 
+                            첨단 안전 시설과 화물 보호 시스템을 갖춘 현대적 선박들을 관리하고 있습니다.
+                        </p>
+                        <ul class="fleet-specs">
+                            <li><span class="spec-label">관리 선박</span> <span class="spec-value">7척</span></li>
+                            <li><span class="spec-label">적재 능력</span> <span class="spec-value">4,000 - 8,000대</span></li>
+                            <li><span class="spec-label">주요 항로</span> <span class="spec-value">한-일, 동남아시아</span></li>
+                            <li><span class="spec-label">화물 종류</span> <span class="spec-value">승용차, 상용차, 중장비</span></li>
+                        </ul>
+                        <p><strong>특화 서비스:</strong> 화물 적재 최적화, 손상 방지, 신속한 하역 지원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title" data-i18n="contact-title">문의</h2>
+                <p class="section-subtitle" data-i18n="contact-subtitle">
+                    언제든지 문의해 주시면 신속하고 정확한 답변을 드리겠습니다.
+                </p>
+            </div>
+            
+            <div class="grid grid-3">
+                <!-- Seoul HQ -->
+                <div class="contact-card fade-in" id="seoul">
+                    <div class="contact-icon"><i class="fas fa-building"></i></div>
+                    <h3 class="card-title" data-i18n="seoul-title">서울 본사</h3>
+                    <div class="contact-details">
+                        <strong>DORIKO LIMITED</strong>
+                        서울특별시 중구 세종대로 110<br>
+                        서울파이낸스빌딩 20층<br><br>
+                        <strong>연락처</strong><br>
+                        전화: <a href="tel:+82-2-1234-5678">+82-2-1234-5678</a><br>
+                        이메일: <a href="mailto:seoul@doriko.com">seoul@doriko.com</a><br><br>
+                        <strong>업무시간</strong><br>
+                        평일 09:00 - 18:00<br>
+                        24시간 응급상황 지원
+                    </div>
+                </div>
+                
+                <!-- Busan Office -->
+                <div class="contact-card fade-in" id="busan">
+                    <div class="contact-icon"><i class="fas fa-water"></i></div>
+                    <h3 class="card-title" data-i18n="busan-title">부산 사무소</h3>
+                    <div class="contact-details">
+                        <strong>DORIKO 부산사무소</strong>
+                        부산광역시 중구 중앙대로 26<br>
+                        부산국제금융센터 15층<br><br>
+                        <strong>연락처</strong><br>
+                        전화: <a href="tel:+82-51-441-8911">+82-51-441-8911</a><br>
+                        이메일: <a href="mailto:busan@doriko.com">busan@doriko.com</a><br><br>
+                        <strong>업무시간</strong><br>
+                        평일 09:00 - 18:00<br>
+                        24시간 응급상황 지원
+                    </div>
+                </div>
+                
+                <!-- Email Contact -->
+                <div class="contact-card fade-in" id="email">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3 class="card-title" data-i18n="email-title">이메일 문의</h3>
+                    <div class="contact-details">
+                        <strong>일반문의</strong><br>
+                        <a href="mailto:info@doriko.com">info@doriko.com</a><br><br>
+                        <strong>기술문의</strong><br>
+                        <a href="mailto:technical@doriko.com">technical@doriko.com</a><br><br>
+                        <strong>채용문의</strong><br>
+                        <a href="mailto:career@doriko.com">career@doriko.com</a><br><br>
+                        <strong>응급상황</strong><br>
+                        <a href="mailto:emergency@doriko.com">emergency@doriko.com</a><br>
+                        24시간 상시 모니터링
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-anchor"></i>
+                        DORIKO LIMITED
+                    </h3>
+                    <p data-i18n="footer-desc">
+                        해운 우수성과 안전 리더십을 바탕으로 아시아태평양 지역의 선도적인 해상 서비스를 제공하는 
+                        전문 선박관리 및 해상 컨설팅 회사입니다.
+                    </p>
+                    <p>
+                        <strong>본사:</strong> 서울특별시 중구 세종대로 110<br>
+                        <strong>사업자등록번호:</strong> 123-45-67890
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-cog"></i>
+                        <span data-i18n="footer-services">주요 서비스</span>
+                    </h3>
+                    <p><a href="#technical">선박관리 (Technical Management)</a></p>
+                    <p><a href="#crew">선원관리 (Crew Management)</a></p>
+                    <p><a href="#rightship">RightShip & Vetting 대응</a></p>
+                    <p><a href="#newbuilding">신조선 인수 감독</a></p>
+                    <p><a href="#esg">ESG & 안전관리</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-info-circle"></i>
+                        <span data-i18n="footer-company">회사정보</span>
+                    </h3>
+                    <p><a href="#about">회사소개</a></p>
+                    <p><a href="#ceo">CEO 인사말</a></p>
+                    <p><a href="#organization">조직도</a></p>
+                    <p><a href="#history">연혁</a></p>
+                    <p><a href="#certification">인증현황</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>
+                        <i class="fas fa-phone"></i>
+                        <span data-i18n="footer-contact">연락처</span>
+                    </h3>
+                    <p>
+                        <strong>서울 본사</strong><br>
+                        <a href="tel:+82-2-1234-5678">+82-2-1234-5678</a>
+                    </p>
+                    <p>
+                        <strong>부산 사무소</strong><br>
+                        <a href="tel:+82-51-441-8911">+82-51-441-8911</a>
+                    </p>
+                    <p>
+                        <strong>이메일</strong><br>
+                        <a href="mailto:info@doriko.com">info@doriko.com</a>
+                    </p>
+                    <p>
+                        <strong>24/7 응급상황 지원</strong><br>
+                        <a href="mailto:emergency@doriko.com">emergency@doriko.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 DORIKO LIMITED. <span data-i18n="footer-rights">All rights reserved.</span></p>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Global variables
+        let isKorean = true;
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        const scrollProgress = document.getElementById('scroll-progress');
+        const loading = document.getElementById('loading');
+
+        // Comprehensive translations
+        const translations = {
+            ko: {
+                "page-title": "DORIKO LIMITED - 해운 우수성과 안전 리더십",
+                "nav-home": "홈",
+                "nav-about": "회사소개",
+                "nav-ceo": "CEO 인사말",
+                "nav-org": "조직도",
+                "nav-history": "연혁",
+                "nav-cert": "인증",
+                "nav-services": "서비스",
+                "nav-technical": "선박관리",
+                "nav-crew": "선원관리",
+                "nav-rightship": "RightShip & Vetting 대응",
+                "nav-newbuilding": "신조선 인수",
+                "nav-esg": "ESG & 안전",
+                "nav-env": "환경관리",
+                "nav-safety": "안전보건",
+                "nav-accident": "중대재해 대응",
+                "nav-training": "교육훈련",
+                "nav-fleet": "선대소개",
+                "nav-bulk": "벌크선",
+                "nav-pctc": "자동차운반선",
+                "nav-insights": "인사이트",
+                "nav-bulletin": "SAFETY BULLETIN",
+                "nav-findings": "점검사례",
+                "nav-regulations": "규정 업데이트",
+                "nav-improvements": "내부개선",
+                "nav-careers": "채용",
+                "nav-seafarer": "선원채용",
+                "nav-office": "육상채용",
+                "nav-working": "채용안내",
+                "nav-contact": "문의",
+                "nav-seoul": "서울 본사",
+                "nav-busan": "부산 사무소",
+                "nav-email": "이메일 문의",
+                "lang-btn": "한국어 / EN",
+                "hero-title": "고객과 함께 성장하는, 신뢰 기반 선박 관리 전문기업",
+                "hero-subtitle": "25년 이상의 풍부한 경험과 체계적인 전담 시스템으로 벌크선 7척, 자동차운반선 7척을 포함한 총 14척의 선박을 안정적으로 관리하며, 고객의 성공적인 비즈니스를 지원합니다.",
+                "hero-btn-primary": "주요 서비스 보기",
+                "hero-btn-secondary": "지금 바로 문의하기",
+                "scroll-down": "아래로 스크롤",
+                "stat-years": "년의 우수성",
+                "stat-vessels": "관리 선박",
+                "stat-support": "응급상황 지원",
+                "stat-compliance": "안전 준수",
+                "about-title": "회사소개",
+                "about-subtitle": "2010년 설립된 DORIKO LIMITED는 대한민국과 아시아태평양 지역의 선도적인 해상 컨설팅 및 선박 관리 서비스 제공업체입니다.",
+                "mission-title": "우리의 미션",
+                "mission-text": "해상 안전, 환경 보호, 운영 효율성에 대한 최고 수준의 서비스를 제공하여 해운업계의 지속가능한 발전에 기여하며, 고객의 성공을 위한 신뢰할 수 있는 파트너가 되겠습니다.",
+                "vision-title": "우리의 비전",
+                "vision-text": "아시아태평양 지역에서 가장 신뢰받는 해상 서비스 파트너가 되어 고객의 성공과 해양 환경 보호를 선도하며, 지속가능한 해운 산업의 미래를 함께 만들어가겠습니다.",
+                "ceo-title": "CEO 인사말",
+                "ceo-greeting-title": "안녕하세요, DORIKO LIMITED CEO입니다.",
+                "ceo-message1": "2010년 DORIKO LIMITED를 설립한 이래, 우리는 해운업계에서 안전과 우수성의 기준을 높이기 위해 끊임없이 노력해왔습니다. 14년간의 경험을 바탕으로, 우리는 고객에게 최고 수준의 선박 관리 및 해상 컨설팅 서비스를 제공하고 있습니다.",
+                "ceo-message2": "급변하는 해운 환경에서 ESG 경영과 디지털 혁신을 통해 지속가능한 성장을 추구하며, 고객과 함께 해운업계의 밝은 미래를 만들어가겠습니다.",
+                "ceo-signature": "<strong>DORIKO LIMITED 대표이사</strong>",
+                "services-title": "주요 서비스",
+                "services-subtitle": "전문성과 혁신을 바탕으로 한 포괄적인 해상 서비스를 제공합니다.",
+                "technical-title": "선박관리 (Technical Management)",
+                "technical-text1": "포괄적인 기술 관리 서비스로 선박의 안전성과 운영 효율성을 극대화합니다. 숙련된 전문가들이 24시간 선박 상태를 모니터링하고 최적의 솔루션을 제공합니다.",
+                "technical-text2": "<strong>주요 서비스:</strong><br>• 정기 정비 및 수리 계획 수립<br>• 선급 검사 및 관련 인증 관리<br>• 예비품 및 소모품 조달 관리<br>• 건조기 수리 및 긴급 수리 대응<br>• 성능 모니터링 및 최적화 컨설팅",
+                "crew-title": "선원관리 (Crew Management)",
+                "crew-text1": "숙련된 선원 채용부터 교육, 배치까지 전문적인 인력 관리 서비스를 제공합니다. 국제 기준에 부합하는 역량 있는 선원을 확보하여 안전하고 효율적인 선박 운항을 지원합니다.",
+                "crew-text2": "<strong>주요 서비스:</strong><br>• 선원 채용 및 선발 관리<br>• STCW 규정에 따른 교육 훈련<br>• 승선 배치 및 교대 계획 수립<br>• 선원 복리후생 및 급여 관리<br>• 의료 지원 및 응급상황 대응",
+                "rightship-title": "RightShip & Vetting 대응",
+                "rightship-text1": "국제 안전 기준 준수를 위한 전문적인 심사 대응 및 지원 서비스입니다. RightShip 플랫폼의 복잡한 요구사항에 대한 완벽한 이해를 바탕으로 최적의 등급을 달성할 수 있도록 지원합니다.",
+                "rightship-text2": "<strong>주요 서비스:</strong><br>• RightShip 등록 및 등급 관리<br>• Vetting 질의서 작성 및 대응<br>• 선박 검사 준비 및 동행 지원<br>• 부적합사항 개선 컨설팅<br>• 지속적인 성과 모니터링",
+                "newbuilding-title": "신조선 인수 (Newbuilding Supervision)",
+                "newbuilding-text1": "신조선 프로젝트의 전 과정을 감독하고 품질 보증을 위한 전문 기술 자문을 제공합니다. 설계 검토부터 최종 인도까지 모든 단계에서 고객의 이익을 대변합니다.",
+                "newbuilding-text2": "<strong>주요 서비스:</strong><br>• 설계 도면 검토 및 승인<br>• 건조 과정 모니터링 및 품질 관리<br>• 시운전 및 성능 시험 참관<br>• 인도 전 최종 검사 및 문제점 해결<br>• 보증 기간 중 기술 지원",
+                "esg-title": "ESG & 안전",
+                "esg-subtitle": "지속가능한 해운 운영과 최고 수준의 안전 관리 시스템을 구축합니다.",
+                "env-title": "환경관리",
+                "env-text": "IMO 환경 규정 준수, 탄소 배출 저감, 친환경 기술 도입을 통한 지속가능한 해운 운영을 위한 종합적인 환경 관리 시스템을 운영합니다.",
+                "safety-title": "안전보건",
+                "safety-text": "ISM Code 기반의 체계적인 안전 관리 시스템을 통해 선원과 선박의 안전을 보장하며, 지속적인 안전 교육과 예방 활동을 실시합니다.",
+                "accident-title": "중대재해 대응",
+                "accident-text": "중대재해처벌법 대응을 위한 예방 체계와 신속한 대응 시스템을 구축하여 모든 이해관계자의 안전을 최우선으로 보호합니다.",
+                "training-title": "교육훈련",
+                "training-text": "STCW 기준에 부합하는 체계적인 교육 프로그램과 시뮬레이터 훈련을 통해 선원의 전문 역량 향상과 안전 의식 제고를 지원합니다.",
+                "fleet-title": "선대소개",
+                "fleet-subtitle": "벌크선과 자동차운반선 전문 관리 경험을 바탕으로 최적화된 서비스를 제공합니다.",
+                "bulk-title": "벌크선 (Bulk Carriers)",
+                "bulk-description": "건화물 운송에 특화된 대형 벌크선부터 소형 벌크선까지 다양한 규모의 선박을 관리하고 있습니다. 철광석, 석탄, 곡물 등 주요 원자재 운송에서 뛰어난 실적을 보유하고 있습니다.",
+                "pctc-title": "자동차운반선 (PCTCs)",
+                "pctc-description": "자동차 및 고부가가치 화물 운송을 위한 전문 자동차운반선 관리 서비스를 제공합니다. 첨단 안전 시설과 화물 보호 시스템을 갖춘 현대적 선박들을 관리하고 있습니다.",
+                "contact-title": "문의",
+                "contact-subtitle": "언제든지 문의해 주시면 신속하고 정확한 답변을 드리겠습니다.",
+                "seoul-title": "서울 본사",
+                "busan-title": "부산 사무소",
+                "email-title": "이메일 문의",
+                "footer-desc": "해운 우수성과 안전 리더십을 바탕으로 아시아태평양 지역의 선도적인 해상 서비스를 제공하는 전문 선박관리 및 해상 컨설팅 회사입니다.",
+                "footer-services": "주요 서비스",
+                "footer-company": "회사정보",
+                "footer-contact": "연락처",
+                "footer-rights": "All rights reserved."
+            },
+            en: {
+                "page-title": "DORIKO LIMITED - Maritime Excellence & Safety Leadership",
+                "nav-home": "Home",
+                "nav-about": "About Us",
+                "nav-ceo": "CEO Message",
+                "nav-org": "Organization",
+                "nav-history": "History",
+                "nav-cert": "Certification",
+                "nav-services": "Services",
+                "nav-technical": "Technical Management",
+                "nav-crew": "Crew Management",
+                "nav-rightship": "RightShip & Vetting Support",
+                "nav-newbuilding": "Newbuilding Supervision",
+                "nav-esg": "ESG & Safety",
+                "nav-env": "Environmental Compliance",
+                "nav-safety": "Health & Safety",
+                "nav-accident": "Serious Accident Response",
+                "nav-training": "Education & Training",
+                "nav-fleet": "Our Fleet",
+                "nav-bulk": "Bulk Carriers",
+                "nav-pctc": "PCTCs",
+                "nav-insights": "Insights",
+                "nav-bulletin": "SAFETY BULLETIN",
+                "nav-findings": "Inspection Findings",
+                "nav-regulations": "Regulation Updates",
+                "nav-improvements": "Internal Improvements",
+                "nav-careers": "Careers",
+                "nav-seafarer": "Seafarer Recruitment",
+                "nav-office": "Office Recruitment",
+                "nav-working": "Working at DORIKO",
+                "nav-contact": "Contact",
+                "nav-seoul": "Seoul HQ",
+                "nav-busan": "Busan Office",
+                "nav-email": "Online Contact",
+                "lang-btn": "EN / 한국어",
+                "hero-title": "A Trusted Ship Management Expert Growing with Clients",
+                "hero-subtitle": "With over 25 years of extensive experience and a systematic dedicated superintendent system, we stably manage a total of 14 vessels, including 7 bulk carriers and 7 PCTCs, supporting our clients' successful businesses.",
+                "hero-btn-primary": "View Our Services",
+                "hero-btn-secondary": "Contact Us Now",
+                "scroll-down": "Scroll Down",
+                "stat-years": "Years of Excellence",
+                "stat-vessels": "Managed Vessels",
+                "stat-support": "Emergency Support",
+                "stat-compliance": "Safety Compliance",
+                "about-title": "About Us",
+                "about-subtitle": "Founded in 2010, DORIKO LIMITED is a leading maritime consulting and ship management service provider in Korea and the Asia-Pacific region.",
+                "mission-title": "Our Mission",
+                "mission-text": "To provide the highest level of service in maritime safety, environmental protection, and operational efficiency, contributing to the sustainable development of the shipping industry and becoming a trusted partner for our clients' success.",
+                "vision-title": "Our Vision",
+                "vision-text": "To become the most trusted maritime service partner in the Asia-Pacific region, leading customer success and marine environmental protection while creating the future of sustainable shipping industry together.",
+                "ceo-title": "CEO Message",
+                "ceo-greeting-title": "Greetings, I am the CEO of DORIKO LIMITED.",
+                "ceo-message1": "Since establishing DORIKO LIMITED in 2010, we have been constantly striving to raise the standards of safety and excellence in the shipping industry. Based on 14 years of experience, we provide our clients with the highest level of ship management and maritime consulting services.",
+                "ceo-message2": "In the rapidly changing maritime environment, we pursue sustainable growth through ESG management and digital innovation, working together with our clients to create a bright future for the shipping industry.",
+                "ceo-signature": "<strong>CEO, DORIKO LIMITED</strong>",
+                "services-title": "Key Services",
+                "services-subtitle": "We provide comprehensive maritime services based on professionalism and innovation.",
+                "technical-title": "Technical Management",
+                "technical-text1": "Comprehensive technical management services that maximize vessel safety and operational efficiency. Our skilled professionals monitor vessel conditions 24/7 and provide optimal solutions.",
+                "technical-text2": "<strong>Key Services:</strong><br>• Regular maintenance and repair planning<br>• Class surveys and related certification management<br>• Spare parts and consumables procurement management<br>• Dry dock repairs and emergency repair response<br>• Performance monitoring and optimization consulting",
+                "crew-title": "Crew Management",
+                "crew-text1": "Professional human resource management services from recruitment to training and deployment of skilled seafarers. We secure competent seafarers meeting international standards to support safe and efficient vessel operations.",
+                "crew-text2": "<strong>Key Services:</strong><br>• Seafarer recruitment and selection management<br>• Training according to STCW regulations<br>• Boarding deployment and rotation planning<br>• Seafarer welfare and payroll management<br>• Medical support and emergency response",
+                "rightship-title": "RightShip & Vetting Support",
+                "rightship-text1": "Professional inspection response and support services for compliance with international safety standards. We support achieving optimal ratings based on a complete understanding of RightShip platform's complex requirements.",
+                "rightship-text2": "<strong>Key Services:</strong><br>• RightShip registration and rating management<br>• Vetting questionnaire preparation and response<br>• Vessel inspection preparation and escort support<br>• Non-conformity improvement consulting<br>• Continuous performance monitoring",
+                "newbuilding-title": "Newbuilding Supervision",
+                "newbuilding-text1": "We supervise the entire process of newbuilding projects and provide professional technical advisory services for quality assurance. We represent our clients' interests at every stage from design review to final delivery.",
+                "newbuilding-text2": "<strong>Key Services:</strong><br>• Design drawing review and approval<br>• Construction process monitoring and quality control<br>• Sea trial and performance test attendance<br>• Pre-delivery final inspection and problem resolution<br>• Technical support during warranty period",
+                "esg-title": "ESG & Safety",
+                "esg-subtitle": "We establish sustainable maritime operations and the highest level safety management systems.",
+                "env-title": "Environmental Management",
+                "env-text": "We operate comprehensive environmental management systems for sustainable maritime operations through IMO environmental regulation compliance, carbon emission reduction, and eco-friendly technology adoption.",
+                "safety-title": "Health & Safety",
+                "safety-text": "We ensure the safety of seafarers and vessels through systematic safety management systems based on ISM Code, conducting continuous safety education and prevention activities.",
+                "accident-title": "Serious Accident Response",
+                "accident-text": "We establish prevention systems and rapid response systems for Serious Accident Punishment Act compliance, protecting the safety of all stakeholders as our top priority.",
+                "training-title": "Education & Training",
+                "training-text": "We support the enhancement of seafarers' professional competency and safety awareness through systematic training programs and simulator training that comply with STCW standards.",
+                "fleet-title": "Our Fleet",
+                "fleet-subtitle": "We provide optimized services based on our specialized management experience with bulk carriers and PCTCs.",
+                "bulk-title": "Bulk Carriers",
+                "bulk-description": "We manage vessels of various sizes from large bulk carriers to small bulk carriers specialized in dry cargo transportation. We have excellent track records in transporting major raw materials such as iron ore, coal, and grains.",
+                "pctc-title": "PCTCs (Pure Car & Truck Carriers)",
+                "pctc-description": "We provide professional PCTC management services for automobile and high-value cargo transportation. We manage modern vessels equipped with advanced safety facilities and cargo protection systems.",
+                "contact-title": "Contact",
+                "contact-subtitle": "Please feel free to contact us anytime for prompt and accurate responses.",
+                "seoul-title": "Seoul HQ",
+                "busan-title": "Busan Office",
+                "email-title": "Online Contact",
+                "footer-desc": "A professional ship management and maritime consulting company providing leading maritime services in the Asia-Pacific region based on maritime excellence and safety leadership.",
+                "footer-services": "Key Services",
+                "footer-company": "Company Info",
+                "footer-contact": "Contact",
+                "footer-rights": "All rights reserved."
+            }
+        };
+
+        // Language toggle function
+        function toggleLanguage() {
+            isKorean = !isKorean;
+            const lang = isKorean ? 'ko' : 'en';
+            
+            // Update all elements with data-i18n attributes
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update title
+            document.title = translations[lang]['page-title'];
+            
+            // Update language button text
+            document.querySelector('[data-i18n="lang-btn"]').textContent = translations[lang]['lang-btn'];
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            const toggleIcon = document.querySelector('#mobile-menu-toggle i');
+            
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                toggleIcon.classList.remove('fa-bars');
+                toggleIcon.classList.add('fa-times');
+            } else {
+                toggleIcon.classList.remove('fa-times');
+                toggleIcon.classList.add('fa-bars');
+            }
+        }
+
+        // Scroll progress
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        }
+
+        // Navbar scroll effect
+        function handleNavbarScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Back to top button
+        function toggleBackToTop() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Intersection Observer for animations
+        function initializeAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animation elements
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen
+            setTimeout(() => {
+                loading.classList.add('fade-out');
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 1000);
+
+            // Initialize animations
+            initializeAnimations();
+
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const navMenu = document.getElementById('nav-menu');
+                        if (navMenu.classList.contains('active')) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
+            });
+
+            // Back to top button
+            backToTop.addEventListener('click', scrollToTop);
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const navMenu = document.getElementById('nav-menu');
+                const toggle = document.getElementById('mobile-menu-toggle');
+                
+                if (!navMenu.contains(e.target) && !toggle.contains(e.target) && navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Scroll event listeners
+        window.addEventListener('scroll', () => {
+            updateScrollProgress();
+            handleNavbarScroll();
+            toggleBackToTop();
+        });
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            const navMenu = document.getElementById('nav-menu');
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
