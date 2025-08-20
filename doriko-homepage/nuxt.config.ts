@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt'
   ],
 
-
   vite: {
     build: {
       cssCodeSplit: false
@@ -25,8 +24,8 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default'
   },
 
-
   app: {
+    baseURL: '/doriko-homepage/',
     head: {
       title: 'DORIKO LIMITED - 해운 우수성과 안전 리더십',
       meta: [
