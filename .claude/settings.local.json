@@ -29,7 +29,8 @@
       "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-enhanced-final.html\")",
       "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-premium-blue.html\")",
       "Bash(python:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(tree:*)"
     ],
     "deny": []
   }

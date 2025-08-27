@@ -60,15 +60,11 @@ test-*.png
 doriko-*.html
 !index.html
 
-# Screenshots and images (keep only necessary ones)
-mobile-*.png
-pc_*.png
-section_*.png
-timeline_*.png
-comprehensive_*.png
-fixed_*.png
-owners_*.png
-doriko_*.png
+# Screenshots (organized in screenshots folder)
+screenshots/
+
+# Documentation drafts
+docs/drafts/
 
 # Claude specific
 .claude/settings.local.json
