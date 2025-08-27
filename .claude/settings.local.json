@@ -27,7 +27,9 @@
       "Bash(npm uninstall:*)",
       "Bash(curl:*)",
       "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-enhanced-final.html\")",
-      "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-premium-blue.html\")"
+      "Bash(start \"C:\\Users\\user\\.vscode\\Work station\\doriko-premium-blue.html\")",
+      "Bash(python:*)",
+      "Bash(git rm:*)"
     ],
     "deny": []
   }
